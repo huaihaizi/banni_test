@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/include_layout"
+        layout="@layout/title_noright_common" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_bg"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/navigation_bar_bg"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ui_40"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/certification_image_title"/>
+
+            <TextView
+                android:id="@+id/text_phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/ui_30"
+                android:text="18888888888"
+                android:textSize="@dimen/font_34"
+                android:textColor="@color/gray3"
+                android:visibility="gone"/>
+
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ui_88"
+                android:layout_marginTop="@dimen/ui_70"
+                android:layout_marginLeft="@dimen/ui_40"
+                android:layout_marginRight="@dimen/ui_40"
+                android:background="@color/color_f6f6f6"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/ui_30"
+                android:hint="输入姓名"
+                android:text=""
+                android:textSize="@dimen/font_34"
+                android:textColor="@color/gray3"/>
+
+            <EditText
+                android:id="@+id/edit_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ui_88"
+                android:layout_marginTop="@dimen/ui_70"
+                android:layout_marginLeft="@dimen/ui_40"
+                android:layout_marginRight="@dimen/ui_40"
+                android:background="@color/color_f6f6f6"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/ui_30"
+                android:hint="输入手机号"
+                android:text=""
+                android:textSize="@dimen/font_34"
+                android:textColor="@color/gray3"/>
+
+            <EditText
+                android:id="@+id/edit_id_card"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ui_88"
+                android:layout_marginTop="@dimen/ui_40"
+                android:layout_marginLeft="@dimen/ui_40"
+                android:layout_marginRight="@dimen/ui_40"
+                android:background="@color/color_f6f6f6"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/ui_30"
+                android:hint="身份证号"
+                android:text=""
+                android:textSize="@dimen/font_34"
+                android:textColor="@color/gray3"/>
+
+            <TextView
+                android:id="@+id/text_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ui_70"
+                android:layout_marginLeft="@dimen/ui_40"
+                android:layout_marginRight="@dimen/ui_40"
+                android:text="*   如果您是残障人士，请务必填写残疾证号码并上传残疾证以便享受“伴你”平台的优惠服务"
+                android:textColor="@color/gray3"
+                android:textSize="@dimen/font_30"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/edit_disability_certificate"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ui_88"
+                android:layout_marginTop="@dimen/ui_margin_20"
+                android:layout_marginLeft="@dimen/ui_40"
+                android:layout_marginRight="@dimen/ui_40"
+                android:background="@color/color_f6f6f6"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/ui_30"
+                android:hint="残疾证号"
+                android:maxLength="25"
+                android:text=""
+                android:textSize="@dimen/font_34"
+                android:textColor="@color/gray3"/>
+            
+            <ImageView
+                android:id="@+id/image_disability_certificate"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ui_300"
+                android:layout_margin="@dimen/ui_40"
+                android:src="@drawable/image_disability_certificate"/>
+
+            <TextView
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ui_40"
+                android:background="@drawable/button_bg"
+                android:gravity="center"
+                android:text="提交"
+                android:textColor="@color/gray3"
+                android:textSize="@dimen/font_36"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>  

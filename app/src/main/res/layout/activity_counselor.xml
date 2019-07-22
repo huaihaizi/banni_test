@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lin_all"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_bg"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_common" />
+
+    <RelativeLayout
+        android:id="@+id/rel1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/navigation_bar_bg">
+
+        <com.hanwin.product.viewutils.MarqueeTextView
+            android:id="@+id/marquee_textview"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ui_88"
+            android:layout_marginLeft="@dimen/ui_30"
+            android:layout_marginRight="@dimen/ui_30"
+            android:background="@drawable/notify_bg"
+            android:drawableLeft="@drawable/notify"
+            android:drawablePadding="@dimen/ui_5"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:paddingLeft="@dimen/ui_30"
+            android:paddingRight="@dimen/ui_30"
+            android:singleLine="true"
+            android:text="平台试运营阶段，在线视频服务免费，平台对翻译内容不承担任何法律责任。"
+            android:textColor="@color/color_808080"
+            android:textSize="@dimen/font_28" />
+
+    </RelativeLayout>
+
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/rel2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingTop="@dimen/ui_margin_20"-->
+        <!--android:background="@color/navigation_bar_bg">-->
+
+        <!--<com.flyco.tablayout.SlidingTabLayout-->
+            <!--android:id="@+id/tl_tab"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="55dp"-->
+            <!--android:background="#ffffff"-->
+            <!--tl:tl_indicator_color="#ffc626"-->
+            <!--tl:tl_indicator_height="2dp"-->
+            <!--tl:tl_indicator_style="NORMAL"-->
+            <!--tl:tl_indicator_width="-1dp"-->
+            <!--tl:tl_indicator_width_equal_title="true"-->
+            <!--tl:tl_tab_padding="10dp"-->
+            <!--tl:tl_textSelectColor="#000000"-->
+            <!--tl:tl_textUnselectColor="#8f8f8f"-->
+            <!--tl:tl_textsize="15sp"-->
+            <!--tl:tl_underline_color="#1A000000"-->
+            <!--tl:tl_underline_height="1dp" />-->
+    <!--</RelativeLayout>-->
+
+    <!--<android.support.v4.view.ViewPager-->
+        <!--android:id="@+id/vp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
+
+    <TextView
+        android:id="@+id/text_marked_words"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_1affc626"
+        android:gravity="center"
+        android:padding="@dimen/ui_5"
+        android:text="* 平台试运营阶段，在线视频服务免费"
+        android:textColor="@color/color_9c7917"
+        android:textSize="@dimen/font_26"
+        android:visibility="gone" />
+
+    <com.hanwin.product.viewutils.MyDropDownMenu
+        android:id="@+id/myDropDownMenu1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.hanwin.product.viewutils.MyDropDownMenu>
+
+    <com.hanwin.product.viewutils.pulltorefresh.PullToRefreshLayout
+        android:id="@+id/refresh_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/refresh_head" />
+
+        <com.hanwin.product.viewutils.pulltorefresh.pullableview.PullableScrollView
+            android:id="@+id/order_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants">
+
+                <LinearLayout
+                    android:id="@+id/lin_not_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/ui_200"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/image_not_recoard" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/ui_40"
+                        android:text="一大波需要您帮助的用户正在路上"
+                        android:textColor="@color/gray3"
+                        android:textSize="@dimen/font_30" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/ui_5"
+                        android:text="请耐心等候..."
+                        android:textColor="@color/gray3"
+                        android:textSize="@dimen/font_30" />
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_counselor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@color/gray_bg"
+                    android:scrollbars="none"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+
+        </com.hanwin.product.viewutils.pulltorefresh.pullableview.PullableScrollView>
+
+        <include layout="@layout/load_more" />
+    </com.hanwin.product.viewutils.pulltorefresh.PullToRefreshLayout>
+</LinearLayout>  

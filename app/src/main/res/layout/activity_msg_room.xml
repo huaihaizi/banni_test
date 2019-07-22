@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorComBg">
+
+    <com.tencent.rtmp.ui.TXCloudVideoView
+        android:id="@+id/big_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.tencent.rtmp.ui.TXCloudVideoView
+        android:id="@+id/small_view"
+        android:layout_width="90dp"
+        android:layout_height="160dp"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/ui_30" />
+
+    <RelativeLayout
+        android:id="@+id/rel_lay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ui_30"
+        android:layout_marginTop="@dimen/ui_40"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/image_head"
+            android:layout_width="@dimen/ui_140"
+            android:layout_height="@dimen/ui_140"
+            android:layout_centerVertical="true"
+            android:src="@drawable/image_head_man" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/ui_margin_20"
+            android:layout_toRightOf="@+id/image_head"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="王小明"
+                android:textColor="@color/navigation_bar_bg"
+                android:textSize="@dimen/font_36" />
+
+            <TextView
+                android:id="@+id/text_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ui_5"
+                android:text="正在呼叫..."
+                android:textColor="@color/navigation_bar_bg"
+                android:textSize="@dimen/font_24" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!--<ImageView-->
+        <!--android:id="@+id/image_switch_camera"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="@dimen/ui_30"-->
+        <!--android:layout_marginTop="@dimen/ui_40"-->
+        <!--android:padding="10dp"-->
+        <!--android:src="@drawable/avchat_switch_camera_bg"-->
+        <!--android:visibility="gone" />-->
+
+    <Chronometer
+        android:id="@+id/avchat_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ui_44"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/navigation_bar_bg"
+        android:textSize="@dimen/font_26"
+        android:visibility="gone"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/lin_in_coming"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/text_reject"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/avchat_refuse_bg_normal"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="拒绝"
+            android:textColor="@color/btn_text"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/text_answer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/avchat_receive_bg_normal"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="接听"
+            android:textColor="@color/btn_text"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/text_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/ui_margin_20"
+        android:layout_marginBottom="@dimen/margin_50"
+        android:src ="@drawable/hang_up" />
+
+    <TextView
+        android:id="@+id/av_trans_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ui_530"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/av_trans_bg"
+        android:visibility="gone"/>
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        layout="@layout/include_video_subtitles" />
+</RelativeLayout>

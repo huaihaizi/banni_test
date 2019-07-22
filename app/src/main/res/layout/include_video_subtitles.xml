@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lin_btn"
+        android:layout_marginBottom="@dimen/ui_30">
+
+        <LinearLayout
+            android:id="@+id/lin_leftbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ui_44"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/text_hang_up1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/ui_margin_20"
+                    android:src="@drawable/hang_up" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/ui_margin_20"
+                    android:text="挂断"
+                    android:textColor="@color/navigation_bar_bg"
+                    android:textSize="@dimen/font_26"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/image_reset_full_screen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/ui_margin_20"
+                    android:src="@drawable/image_vertical_screen" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="竖屏"
+                    android:textColor="@color/navigation_bar_bg"
+                    android:textSize="@dimen/font_26"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/image_switch_camera1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/ui_margin_20"
+                    android:src="@drawable/avchat_switch_camera_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/ui_margin_20"
+                    android:text="切换摄像头"
+                    android:textColor="@color/navigation_bar_bg"
+                    android:textSize="@dimen/font_26"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/lin_leftbtn"
+            android:layout_marginBottom="@dimen/ui_30"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lin_signlanguage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/lin_consumer"
+                android:layout_marginLeft="@dimen/ui_44"
+                android:layout_marginTop="@dimen/ui_44"
+                android:layout_marginBottom="2dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/signlanguage_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/signlanguage_icon"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/show_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/ui_5"
+                    android:layout_marginRight="@dimen/ui_30"
+                    android:lines="2"
+                    android:text=""
+                    android:textColor="@color/navigation_bar_bg"
+                    android:textSize="@dimen/font_36" />
+            </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_consumer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/lin_leftbtn"
+            android:layout_marginBottom="7dp"
+            android:layout_toRightOf="@+id/lin_leftbtn"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/consumer_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/consumer_icon"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/show_text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/ui_5"
+                    android:layout_marginRight="@dimen/ui_30"
+                    android:lines="2"
+                    android:textColor="@color/navigation_bar_bg"
+                    android:textSize="@dimen/font_36" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lin_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image_switch_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/ui_margin_20"
+                android:src="@drawable/avchat_switch_camera_bg" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/ui_30"
+                android:text="切换摄像头"
+                android:textColor="@color/navigation_bar_bg"
+                android:textSize="@dimen/font_26"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/text_hang_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/ui_margin_20"
+                android:src="@drawable/hang_up" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/ui_30"
+                android:text="挂断"
+                android:textColor="@color/navigation_bar_bg"
+                android:textSize="@dimen/font_26"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image_full_screen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/ui_margin_20"
+                android:src="@drawable/image_full_screen" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/ui_30"
+                android:text="横屏"
+                android:textColor="@color/navigation_bar_bg"
+                android:textSize="@dimen/font_26"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

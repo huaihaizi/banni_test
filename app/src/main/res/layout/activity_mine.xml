@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navigation_bar_bg"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/title_noright_common" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rel_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_50"
+            android:padding="@dimen/ui_30">
+
+            <com.hanwin.product.viewutils.CircleImageView
+                android:id="@+id/image_head"
+                android:layout_width="@dimen/ui_130"
+                android:layout_height="@dimen/ui_130"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/mine_image_head" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/text_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="王小明"
+                        android:textColor="@color/gray3"
+                        android:textSize="@dimen/font_48" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/text_sex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="女"
+                        android:textColor="@color/color_292929"
+                        android:textSize="@dimen/font_30" />
+
+                    <TextView
+                        android:id="@+id/text_line"
+                        android:layout_width="1dp"
+                        android:layout_height="@dimen/ui_30"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/ui_30"
+                        android:layout_toRightOf="@+id/text_sex"
+                        android:background="@color/gray" />
+
+                    <TextView
+                        android:id="@+id/text_position"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/ui_30"
+                        android:layout_toRightOf="@+id/text_line"
+                        android:text="上海"
+                        android:textColor="@color/color_292929"
+                        android:textSize="@dimen/font_30" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/text_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ui_30"
+                    android:text="欢迎来到伴你"
+                    android:textColor="@color/color_676767"
+                    android:textSize="@dimen/font_30" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ui_5"
+            android:layout_marginTop="@dimen/ui_margin_20"
+            android:background="@color/gray_bg" />
+
+        <RelativeLayout
+            android:id="@+id/rel_person_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ui_30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawablePadding="@dimen/ui_margin_20"
+                android:drawableLeft="@drawable/mine_person_info"
+                android:text="个人资料"
+                android:textColor="@color/color_010101"
+                android:textSize="@dimen/font_30" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/mine_into" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view_add"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_bg"
+            android:layout_marginLeft="@dimen/ui_80"/>
+
+        <RelativeLayout
+            android:id="@+id/rel_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ui_30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawablePadding="@dimen/ui_margin_20"
+                android:drawableLeft="@drawable/mine_add"
+                android:text="加入手语师"
+                android:textColor="@color/color_010101"
+                android:textSize="@dimen/font_30" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/mine_into" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view_advice"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_bg"
+            android:layout_marginLeft="@dimen/ui_80"/>
+
+        <RelativeLayout
+            android:id="@+id/rel_advice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ui_30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawablePadding="@dimen/ui_margin_20"
+                android:drawableLeft="@drawable/mine_advice"
+                android:text="意见反馈"
+                android:textColor="@color/color_010101"
+                android:textSize="@dimen/font_30" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/mine_into" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view_certification"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_bg"
+            android:layout_marginLeft="@dimen/ui_80"/>
+
+        <RelativeLayout
+            android:id="@+id/rel_certification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ui_30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawablePadding="@dimen/ui_margin_20"
+                android:drawableLeft="@drawable/mine_certification"
+                android:text="实名认证"
+                android:textColor="@color/color_010101"
+                android:textSize="@dimen/font_30" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/mine_into" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view_signlanguage_skills"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_bg"
+            android:layout_marginLeft="@dimen/ui_80"/>
+
+        <RelativeLayout
+            android:id="@+id/rel_signlanguage_skills"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ui_30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawablePadding="@dimen/ui_margin_20"
+                android:drawableLeft="@drawable/mine_signlanguage_skills"
+                android:text="手语技能信息"
+                android:textColor="@color/color_010101"
+                android:textSize="@dimen/font_30" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/mine_into" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view_service_time"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_bg"
+            android:layout_marginLeft="@dimen/ui_80"/>
+
+        <RelativeLayout
+            android:id="@+id/rel_service_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ui_30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawablePadding="@dimen/ui_margin_20"
+                android:drawableLeft="@drawable/mine_service_time"
+                android:text="服务时间段"
+                android:textColor="@color/color_010101"
+                android:textSize="@dimen/font_30" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/mine_into" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_bg"
+            android:layout_marginLeft="@dimen/ui_80"/>
+
+        <RelativeLayout
+            android:id="@+id/rel_consult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ui_30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="允许立即咨询"
+                android:drawablePadding="@dimen/ui_margin_20"
+                android:drawableLeft="@drawable/mine_consult"
+                android:textColor="@color/color_010101"
+                android:textSize="@dimen/font_30" />
+
+            <CheckBox
+                android:id="@+id/check_consult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:button="@null"
+                android:background="@drawable/selector_consul_switch" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_bg"
+            android:layout_marginLeft="@dimen/ui_80"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text_quit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ui_100"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray_bg"
+            android:gravity="center"
+            android:text="退出登录"
+            android:textColor="@color/gray3"
+            android:textSize="@dimen/font_30" />
+
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lin_top"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/navigation_bar_bg">
+
+        <RelativeLayout
+            android:id="@+id/lin_translation"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/text_translation"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/ui_100"
+                android:paddingLeft="@dimen/ui_60"
+                android:paddingRight="@dimen/ui_60"
+                android:drawablePadding="@dimen/ui_5"
+                android:drawableRight="@drawable/down_normal"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="全部领域"
+                android:textSize="@dimen/font_26"
+                android:textColor="@color/color_8f8f8f" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.02">
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="@dimen/ui_40"
+                android:background="@color/color_f0eff5"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_online_state"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/text_online_state"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/ui_100"
+                android:layout_marginRight="@dimen/ui_5"
+                android:paddingLeft="@dimen/ui_70"
+                android:paddingRight="@dimen/ui_70"
+                android:gravity="center"
+                android:text="全部状态"
+                android:textColor="@color/color_8f8f8f"
+                android:textSize="@dimen/font_26"
+                android:drawablePadding="@dimen/ui_5"
+                android:drawableRight="@drawable/down_normal" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_f0eff5" />
+</LinearLayout>

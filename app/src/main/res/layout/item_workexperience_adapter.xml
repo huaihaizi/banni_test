@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/navigation_bar_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_company_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ui_30"
+        android:paddingBottom="@dimen/ui_5"
+        android:paddingTop="@dimen/margin_50"
+        android:singleLine="true"
+        android:text="职位 | 公司"
+        android:textColor="@color/color_292929"
+        android:textSize="@dimen/font_30" />
+
+    <TextView
+        android:id="@+id/text_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ui_30"
+        android:gravity="center"
+        android:text="2014.04 - 2018.04"
+        android:textColor="@color/color_8f8f8f"
+        android:textSize="@dimen/font_26" />
+</LinearLayout>

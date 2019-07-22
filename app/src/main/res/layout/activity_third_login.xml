@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navigation_bar_bg"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/rel_title"
+        layout="@layout/title_noright_common" />
+
+    <ImageView
+        android:id="@+id/image_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/ui_120"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/text_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/ui_30"
+        android:layout_marginBottom="@dimen/ui_100"
+        android:text="伴你无碍"
+        android:textColor="@color/gray3"
+        android:textSize="@dimen/font_36"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/rel_wechat_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_app_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/ui_5"
+        android:background="@drawable/wechat_login">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/wechat_icon"
+            android:drawablePadding="@dimen/ui_5"
+            android:text="微信登录"
+            android:textColor="@color/navigation_bar_bg"
+            android:textSize="@dimen/font_38" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text_account_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/rel_wechat_login"
+        android:layout_marginTop="@dimen/ui_5"
+        android:gravity="center"
+        android:text="现有账号登录"
+        android:textColor="@color/navigation_bar_bg"
+        android:textSize="@dimen/font_38"
+        android:background="@drawable/account_login"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/company_name"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/check_imageview"
+            android:layout_width="@dimen/margin_50"
+            android:layout_height="@dimen/ui_80"
+            android:scaleType="centerInside"
+            android:src="@drawable/checkbox_checked" />
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/check_imageview"
+            android:text="我已阅读并同意"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font_24" />
+
+        <TextView
+            android:id="@+id/text_register_clause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/text1"
+            android:paddingBottom="@dimen/ui_5"
+            android:paddingRight="@dimen/ui_5"
+            android:paddingTop="@dimen/ui_5"
+            android:text="用户注册协议"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/font_24" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/company_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/margin_50"
+        android:gravity="center"
+        android:text="伴你（上海）网络信息技术服务有限公司"
+        android:textColor="@color/color_9B9B9B"
+        android:textSize="@dimen/font_24" />
+</RelativeLayout>

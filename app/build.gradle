@@ -1,0 +1,215 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+    dexOptions {
+        javaMaxHeapSize "4g"
+        incremental true
+    }
+    defaultConfig {
+        applicationId "com.hanwin.product"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 22
+        versionName "2.32"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        ndk {
+            abiFilters 'armeabi-v7a', 'armeabi'
+        }
+        // 默认是umeng的渠道
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyongbao",
+                                JPUSH_PKGNAME      : applicationId,
+                                JPUSH_APPKEY       : "23e188e0ad7c0a828f68ff4d",//值来自开发者平台取得的AppKey
+                                JPUSH_CHANNEL      : "default_developer",]
+    }
+
+    sourceSets {
+        main {
+            //jniLibs.srcDirs 'src/main/jniLibs'
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("../resource/release.keystore")
+            storePassword 'thisiskeystorepassword'
+            keyAlias 'nim_demo'
+            keyPassword 'thisiskeypassword'
+        }
+        release {
+            storeFile file("../resource/release.keystore")
+            storePassword 'thisiskeystorepassword'
+            keyAlias 'nim_demo'
+            keyPassword 'thisiskeypassword'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    // 友盟多渠道打包
+    productFlavors {
+        xiaomi {}
+        yingyongbao {}
+        huawei {}
+        meizu {}
+    }
+
+    productFlavors.all { flavor ->
+        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+    //给apk添加对应的版本号,重新命名：
+    applicationVariants.all { variant ->
+//        AS 3.0 时用的代码：
+        variant.outputs.all {
+            outputFileName = "com.hanwin-" + variant.productFlavors[0].name + "-" + buildType.name + "-v" + defaultConfig.versionName + "-" + defaultConfig.versionCode + "${releaseTime()}.apk"
+        }
+
+//        AS 2.3时用的代码：
+//        variant.outputs.all { output ->
+//            def filePath = output.outputFile.parent + "/${variant.buildType.name}"
+//            def fileName = output.outputFile.name
+//            if (fileName.endsWith(".apk")) {
+//                def apkName = "com.hanwin-" + variant.productFlavors[0].name + "-" + buildType.name + "-v" +
+//                        defaultConfig.versionName + "-" + defaultConfig.versionCode + "${releaseTime()}.apk";
+//                output.outputFile = new File(filePath, apkName)
+//            }
+//        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'lib/arm64-v8a/libRSSupport.so'
+        exclude 'lib/arm64-v8a/librsjni.so'
+        exclude 'lib/armeabi-v7a/libRSSupport.so'
+        exclude 'lib/mips/libRSSupport.so'
+        exclude 'lib/x86/libRSSupport.so'
+        exclude 'lib/mips/librsjni.so'
+        exclude 'lib/x86_64/libRSSupport.so'
+        exclude 'lib/x86/librsjni.so'
+        exclude 'lib/x86_64/librsjni.so'
+        exclude 'lib/armeabi-v7a/librsjni.so'
+    }
+
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+
+    flavorDimensions "rc"
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.appSourceCompatibility
+        targetCompatibility rootProject.ext.appTargetCompatibility
+    }
+}
+
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.mcxiaoke.volley:library:1.0.19'
+    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    implementation 'com.google.dagger:dagger:2.11'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+    implementation 'com.quicklib:quicklib-multidex:1.0.1'
+    implementation 'com.google.code.gson:gson:2.2.4'
+    implementation 'com.github.d-max:spots-dialog:0.4@aar'
+    implementation 'com.jakewharton:butterknife:7.0.1'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex:rxjava:1.1.6'
+    implementation 'com.github.bumptech.glide:glide:4.2.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
+    implementation 'com.google.android.gms:play-services:7.5.0'
+    implementation 'com.github.fodroid:XRadioGroup:v1.5'
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+    implementation 'com.jude:rollviewpager:1.4.5'
+    implementation 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    implementation 'com.contrarywind:Android-PickerView:4.1.4'
+    implementation files('libs/core-3.2.1.jar')
+    implementation 'com.meizu.flyme.internet:push-internal:3.6.3@aar'
+    //    implementation 'com.huawei.android.hms:push:2.6.0.301'
+    compile('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
+        transitive = true
+    }
+    implementation 'android.arch.lifecycle:extensions:1.1.0'
+    implementation 'android.arch.lifecycle:common-java8:1.1.0'
+    //    compile project(path: ':rtskit')
+    //友盟统计
+    implementation 'com.umeng.sdk:common:latest.integration'
+    implementation 'com.umeng.sdk:analytics:latest.integration'
+    //腾讯实时音视频
+    api 'com.tencent.imsdk:imsdk:latest.release'
+    implementation 'com.tencent.liteav:LiteAVSDK_TRTC:latest.release'
+    //其中latest.release指代最新iLiveSDK版本号
+    // build.gradle 中，加载非p图普通版
+    implementation 'com.tencent.ilivefilter:liteav_normal:1.1.21'
+    implementation 'com.alibaba:fastjson:1.1.52.android'
+    implementation files('libs/HwPush_SDK_V2705.jar')
+    implementation 'com.github.huburt-Hu:NewbieGuide:v2.4.0'
+    //导航
+    implementation 'com.github.liqinew:slidenavigation:V.1.0.1'
+    implementation project(':FlycoTabLayout_Lib')
+    //语音识别
+    compile 'com.tencent.aai:aai:2.1.2:@aar'
+    implementation 'org.slf4j:slf4j-android:1.6.1-RC1'
+    //EventBus
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    //微信sdk
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    //倒角图片
+    implementation 'org.raphets:roundimageview:1.2.0'
+    //极光推送
+    implementation 'cn.jiguang.sdk:jpush:3.3.2'
+    // 此处以JPush 3.3.2 版本为例。
+    implementation 'cn.jiguang.sdk:jcore:2.0.1'
+    // 此处以JCore 2.0.1 版本为例
+    //gif动画加载
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
+    //网络框架
+    implementation 'com.lzy.net:okgo:3.0.4'
+    implementation files('libs/aip-java-sdk-4.1.1.jar')
+    implementation files('libs/com.baidu.tts_2.3.2.20180713_6101c2a.jar')
+    //implementation files('libs/libqcloudtts_1.2.1_release.aar')
+    compile(name: 'libqcloudtts_1.2.1_release', ext: 'aar')
+    //anko
+    implementation "org.jetbrains.anko:anko:$anko_version"
+    implementation "org.jetbrains.anko:anko-appcompat-v7-commons:$anko_version"
+    implementation 'com.android.support:cardview-v7:27.1.1'
+}

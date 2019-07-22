@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/text_province"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/ui_80"
+    android:background="@color/navigation_bar_bg"
+    android:paddingLeft="@dimen/navigation_bar_edit_margin"
+    android:textColor="@color/gray3"
+    android:gravity="center_vertical"
+    android:textSize="@dimen/font_30"
+    android:text="北京"
+    >
+
+</TextView>

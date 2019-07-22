@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rel_common"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:background="@color/navigation_bar_bg">
+
+    <TextView
+        android:id="@+id/text_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/ui_30"
+        android:text=""
+        android:textSize="@dimen/font_46"
+        android:textColor="@color/gray3"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text=""
+        android:textSize="@dimen/font_46"
+        android:textColor="@color/gray3"
+        android:textStyle="bold"/>
+
+    <com.hanwin.product.viewutils.CircleImageView
+        android:id="@+id/image_head"
+        android:layout_width="@dimen/ui_60"
+        android:layout_height="@dimen/ui_60"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/ui_30"
+        android:src="@drawable/mine_image_head"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/lin_mine"
+        android:layout_width="@dimen/ui_180"
+        android:layout_height="@dimen/ui_60"
+        android:orientation="horizontal"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/ui_30"
+        android:background="@drawable/login_mine_bg">
+
+        <com.hanwin.product.viewutils.CircleImageView
+            android:id="@+id/image_my"
+            android:layout_width="@dimen/margin_50"
+            android:layout_height="@dimen/margin_50"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="2dp"
+            android:src="@drawable/mine_image_head" />
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:maxEms="4"
+            android:ellipsize="end"
+            android:text="实名认证"
+            android:textColor="@color/color_808080"
+            android:textSize="@dimen/font_24"
+            android:gravity="center_vertical"
+            android:layout_marginRight="3dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="3dp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/ui_30">
+
+        <ImageView
+            android:id="@+id/image_appointment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/appointment_icon"/>
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/image_gif_activity"
+            android:layout_width="@dimen/margin_50"
+            android:layout_height="@dimen/margin_50"
+            android:layout_toRightOf="@+id/image_appointment"
+            android:layout_marginLeft="@dimen/ui_30"
+            android:src="@drawable/activity_icon"/>
+    </RelativeLayout>
+
+</RelativeLayout>

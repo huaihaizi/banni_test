@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ratingbar="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/ui_30"
+    android:layout_marginRight="@dimen/ui_30"
+    android:layout_marginTop="@dimen/ui_margin_20"
+    android:background="@color/navigation_bar_bg">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/ui_30"
+        android:layout_marginRight="@dimen/ui_30"
+        android:layout_marginTop="@dimen/ui_30"
+        android:background="@drawable/image_disability_certificate"
+        app:layout_constraintDimensionRatio="2.25:1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/image_head"
+        android:layout_width="@dimen/ui_160"
+        android:layout_height="@dimen/ui_160"
+        android:layout_marginLeft="@dimen/ui_margin_20"
+        android:layout_marginTop="@dimen/ui_30"
+        android:background="@drawable/image_head_man"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ui_margin_20"
+        android:gravity="center_vertical"
+        android:text="张宇"
+        android:textColor="@color/gray3"
+        android:textSize="@dimen/font_36"
+        app:layout_constraintLeft_toRightOf="@+id/image_head"
+        app:layout_constraintTop_toTopOf="@+id/image_head" />
+
+    <com.hanwin.product.viewutils.StarBarView
+        android:id="@+id/starBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ui_5"
+        ratingbar:starEmpty="@drawable/start_normal"
+        ratingbar:starFill="@drawable/start_checked"
+        ratingbar:starCount="5"
+        ratingbar:starDistance="5dp"
+        ratingbar:starSize="10dp"
+        app:layout_constraintLeft_toLeftOf="@+id/text_name"
+        app:layout_constraintTop_toBottomOf="@+id/text_name"/>
+
+    <TextView
+        android:id="@+id/text_grade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/ui_5"
+        android:text="5.0分"
+        android:textColor="@color/color_ffc626"
+        android:textSize="@dimen/font_24"
+        app:layout_constraintLeft_toRightOf="@+id/starBar"
+        app:layout_constraintTop_toTopOf="@+id/starBar"
+        app:layout_constraintBottom_toBottomOf="@+id/starBar" />
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ui_margin_20"
+        android:layout_marginTop="@dimen/ui_5"
+        android:text="认证手语翻译师"
+        android:textColor="@color/color_8f8f8f"
+        android:textSize="@dimen/font_24"
+        app:layout_constraintLeft_toRightOf="@+id/image_head"
+        app:layout_constraintTop_toBottomOf="@+id/starBar" />
+
+    <TextView
+        android:id="@+id/text_translation_orientation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ui_margin_20"
+        android:layout_marginTop="@dimen/ui_5"
+        android:text="翻译方向：银行金融"
+        android:textColor="@color/color_8f8f8f"
+        android:textSize="@dimen/font_24"
+        app:layout_constraintLeft_toRightOf="@+id/image_head"
+        app:layout_constraintTop_toBottomOf="@+id/tv3"
+        app:layout_constraintBottom_toBottomOf="@id/image_head"/>
+
+
+    <TextView
+        android:id="@+id/text_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/call_orange_background"
+        android:text="立即呼叫"
+        android:textSize="@dimen/font_30"
+        android:textColor="@color/gray3"
+        android:gravity="center"
+        android:layout_marginRight="@dimen/ui_margin_20"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tv3" />
+
+    <TextView
+        android:id="@+id/tv6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="个人简介："
+        android:textSize="@dimen/font_26"
+        android:textColor="@color/gray3"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/ui_margin_20"
+        android:layout_marginTop="@dimen/margin_50"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_head"/>
+
+    <TextView
+        android:id="@+id/text_person_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="号多少空间还胡椒粉还是你的色调控件解放jjj路的快速打开来说看到考试来说科目考试没考虑卡死了钢结构来看的话手机号多少空间还"
+        android:textSize="@dimen/font_26"
+        android:textColor="@color/gray3"
+        android:gravity="center_vertical"
+        android:ellipsize="end"
+        android:lineSpacingExtra="@dimen/ui_5"
+        android:maxLines="2"
+        android:layout_marginLeft="@dimen/ui_margin_20"
+        android:layout_marginTop="@dimen/ui_5"
+        android:layout_marginRight="@dimen/ui_30"
+        android:layout_marginBottom="@dimen/ui_100"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv6"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_width="@dimen/ui_420"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/ui_530"
+        android:layout_marginRight="@dimen/ui_70">
+
+        <!--<ImageView-->
+            <!--android:id="@+id/image"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="@dimen/ui_60"-->
+            <!--android:src="@drawable/triangle_shape"/>-->
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image"
+            android:background="@drawable/guide_lable_bg"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/ui_5"
+            android:paddingLeft="@dimen/ui_40"
+            android:paddingRight="@dimen/ui_40"
+            android:paddingTop="@dimen/ui_5"
+            android:text="点击“立即呼叫”可以\n马上联系您选择的手语师"
+            android:textColor="@color/navigation_bar_bg"
+            android:textSize="@dimen/font_30" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/next_step1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/r1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/ui_150"
+        android:background="@drawable/white_hollow_corner_bg"
+        android:paddingBottom="@dimen/ui_5"
+        android:paddingLeft="@dimen/ui_30"
+        android:paddingRight="@dimen/ui_30"
+        android:paddingTop="@dimen/ui_5"
+        android:text="下一步"
+        android:textColor="@color/navigation_bar_bg"
+        android:textSize="@dimen/font_30" />
+</RelativeLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CustomDialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/navigation_bar_edit_margin"
+        android:layout_marginRight="@dimen/navigation_bar_edit_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/white_corner_bg"
+            android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_take"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_30"
+            android:textColor="@color/gray3"
+            android:padding="@dimen/navigation_bar_edit_margin"
+            android:gravity="center"
+            android:text="拍照"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/gray_bg" />
+
+        <TextView
+            android:id="@+id/text_choose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_30"
+            android:textColor="@color/gray3"
+            android:padding="@dimen/navigation_bar_edit_margin"
+            android:gravity="center"
+            android:text="从相册中选择"/>
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_dismiss"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ui_88"
+            android:layout_marginTop="@dimen/ui_margin_20"
+            android:textColor="@color/gray3"
+            android:background="@drawable/white_corner_bg"
+            android:text="取消"
+            android:textSize="@dimen/font_30"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

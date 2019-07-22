@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navigation_bar_bg"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_noright_common" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ui_30"
+        android:layout_marginRight="@dimen/ui_30"
+        android:layout_marginTop="@dimen/ui_160"
+        android:layout_marginBottom="@dimen/ui_40"
+        android:lineSpacingExtra="@dimen/ui_5"
+        android:text="感谢您申请加入“伴你”手语翻译团队，您的信息我们已经收到，请保持手机畅通，我们的工作人员会尽快联系您~"
+        android:textColor="@color/gray3"
+        android:textSize="@dimen/font_30"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ui_80">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/submit_advice"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
+</LinearLayout>  

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ratingbar="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/navigation_bar_bg">
+
+    <RelativeLayout
+        android:id="@+id/rel_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_50"
+        android:layout_marginRight="@dimen/ui_30"
+        android:layout_marginTop="@dimen/ui_30">
+
+        <com.hanwin.product.viewutils.CircleImageView
+            android:id="@+id/image_head"
+            android:layout_width="@dimen/ui_160"
+            android:layout_height="@dimen/ui_160"
+            android:layout_centerVertical="true"
+            android:src="@drawable/image_head_man" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/ui_margin_20"
+            android:layout_toRightOf="@+id/image_head"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="王小明"
+                    android:textColor="@color/gray3"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:layout_marginRight="2dp"
+                    android:layout_toLeftOf="@+id/text_shield"
+                    android:textSize="@dimen/font_36" />
+
+                <TextView
+                    android:id="@+id/text_shield"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/ui_60"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/shield_corner_bg"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/ui_40"
+                    android:paddingRight="@dimen/ui_40"
+                    android:text="屏蔽他"
+                    android:textColor="@color/color_CF5D45"
+                    android:textSize="@dimen/font_30" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/text_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ui_30"
+                android:text="性别：男"
+                android:textColor="@color/gray3"
+                android:textSize="@dimen/font_30" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text_record_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rel_lay"
+        android:layout_marginTop="@dimen/ui_30"
+        android:layout_marginLeft="@dimen/margin_50"
+        android:text="聊天记录："
+        android:textColor="@color/gray3"
+        android:textSize="@dimen/font_34"/>
+
+    <RelativeLayout
+        android:id="@+id/rel_recycler_record"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_record_tag">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_record"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ui_5"
+            android:layout_marginLeft="@dimen/margin_50"
+            android:divider="@color/gray_bg"
+            android:scrollbars="none"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rel_recycler_record"
+        android:layout_alignParentRight="true"
+        android:padding="@dimen/ui_30"
+        android:drawableRight="@drawable/down_normal"
+        android:drawablePadding="@dimen/ui_5"
+        android:text="更多记录"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/font_26"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ui_5"
+        android:layout_below="@id/text_more"
+        android:background="@color/color_f0eff5"/>
+</RelativeLayout>

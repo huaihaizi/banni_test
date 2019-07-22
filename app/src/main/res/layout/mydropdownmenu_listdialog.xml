@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lin_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#88000000"
+    >
+    <com.hanwin.product.viewutils.MyListViewformesure
+        android:id="@+id/list_gropdown"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.hanwin.product.viewutils.MyListViewformesure>
+
+
+</LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navigation_bar_bg"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_noright_common" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ui_30"
+        android:layout_marginRight="@dimen/ui_30"
+        android:layout_marginTop="@dimen/ui_30"
+        android:layout_marginBottom="@dimen/ui_40"
+        android:lineSpacingExtra="@dimen/ui_5"
+        android:text="感谢您的使用，您对“伴你无碍”有任何想法，可告知我们，我们会不断的持续提高"
+        android:textColor="@color/gray3"
+        android:textSize="@dimen/font_30"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ui_300"
+        android:layout_marginTop="@dimen/ui_60"
+        android:layout_marginLeft="@dimen/ui_30"
+        android:layout_marginRight="@dimen/ui_30"
+        android:background="@color/color_fafafa">
+
+        <EditText
+            android:id="@+id/edit_suggestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ui_30"
+            android:layout_marginRight="@dimen/ui_30"
+            android:layout_marginTop="@dimen/ui_30"
+            android:lineSpacingExtra="@dimen/ui_5"
+            android:background="@color/color_fafafa"
+            android:text=""
+            android:textSize="@dimen/font_30"
+            android:textColor="@color/color_8f8f8f"
+            android:hint="请在此处留下您的宝贵意见，谢谢"/>
+
+    </RelativeLayout>
+
+</LinearLayout>  

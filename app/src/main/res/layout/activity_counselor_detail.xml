@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navigation_bar_bg"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_noright_common" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ui_550">
+
+                <ImageView
+                    android:id="@+id/person_image_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/text_position_year"
+                    android:layout_centerHorizontal="true"
+                    android:text="王小明"
+                    android:textColor="@color/navigation_bar_bg"
+                    android:textSize="@dimen/font_60" />
+
+                <TextView
+                    android:id="@+id/text_position_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/ui_40"
+                    android:layout_marginTop="@dimen/ui_5"
+                    android:background="@drawable/corner_black_bg"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/ui_margin_20"
+                    android:paddingRight="@dimen/ui_margin_20"
+                    android:text="暂无信息"
+                    android:textColor="@color/navigation_bar_bg"
+                    android:textSize="@dimen/font_24" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_person"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ui_30"
+                    android:layout_marginTop="@dimen/ui_40"
+                    android:gravity="center"
+                    android:text="|  个人简介"
+                    android:textColor="@color/color_f0bb28"
+                    android:textSize="@dimen/font_30" />
+
+                <TextView
+                    android:id="@+id/text_person_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/ui_margin_20"
+                    android:layout_marginLeft="@dimen/ui_30"
+                    android:layout_marginRight="@dimen/ui_30"
+                    android:layout_marginTop="@dimen/margin_50"
+                    android:lineSpacingExtra="@dimen/ui_5"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/color_292929"
+                    android:textSize="@dimen/font_26" />
+
+                <TextView
+                    android:id="@+id/text_see_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/ui_margin_20"
+                    android:padding="@dimen/ui_margin_20"
+                    android:drawablePadding="@dimen/ui_5"
+                    android:drawableRight="@drawable/down"
+                    android:gravity="center"
+                    android:text="点击查看更多"
+                    android:textColor="@color/color_f0bb28"
+                    android:textSize="@dimen/font_26"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ui_30"
+                android:background="@color/gray_bg" />
+
+            <LinearLayout
+                android:id="@+id/lin_workexp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ui_30"
+                    android:layout_marginTop="@dimen/ui_40"
+                    android:gravity="center"
+                    android:text="|  翻译经历"
+                    android:textColor="@color/color_f0bb28"
+                    android:textSize="@dimen/font_30" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_work_exp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/ui_40">
+
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ui_30"
+                android:background="@color/gray_bg" />
+
+            <LinearLayout
+                android:id="@+id/lin_certificates"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ui_30"
+                    android:layout_marginTop="@dimen/ui_40"
+                    android:gravity="center"
+                    android:text="|  职业证明文件"
+                    android:textColor="@color/color_f0bb28"
+                    android:textSize="@dimen/font_30" />
+
+                <com.jude.rollviewpager.RollPagerView
+                    android:id="@+id/sliderLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/ui_420"
+                    android:layout_margin="@dimen/ui_30">
+
+                </com.jude.rollviewpager.RollPagerView>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ui_30"
+                android:background="@color/gray_bg" />
+
+            <LinearLayout
+                android:id="@+id/lin_education"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ui_30"
+                    android:layout_marginTop="@dimen/ui_40"
+                    android:gravity="center"
+                    android:text="|  教育背景"
+                    android:textColor="@color/color_f0bb28"
+                    android:textSize="@dimen/font_30" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_education_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/ui_40">
+
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ui_30"
+                android:background="@color/gray_bg"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ui_30"
+                    android:layout_marginTop="@dimen/ui_40"
+                    android:gravity="center"
+                    android:text="|  约见保障计划"
+                    android:textColor="@color/color_f0bb28"
+                    android:textSize="@dimen/font_30" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/ui_40"
+                    android:layout_marginLeft="@dimen/ui_30"
+                    android:layout_marginRight="@dimen/ui_30"
+                    android:layout_marginTop="@dimen/margin_50"
+                    android:gravity="center_vertical"
+                    android:text="1.在汉云手语确认约见后，用户才需付款\n2.付款后，用户可以通过私聊方式与咨询师沟通见面细节\n3.如有时间有变，用户在见面24小时随时可取消预约并退款。"
+                    android:textColor="@color/color_292929"
+                    android:textSize="@dimen/font_26" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ui_30"
+                android:background="@color/gray_bg" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ui_88">
+
+                <TextView
+                    android:id="@+id/text_call"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/ui_72"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="@dimen/ui_5"
+                    android:layout_marginTop="@dimen/ui_5"
+                    android:layout_marginLeft="@dimen/margin_50"
+                    android:layout_marginRight="@dimen/margin_50"
+                    android:background="@drawable/circle_orangle_bg"
+                    android:gravity="center"
+                    android:text="立即咨询"
+                    android:textColor="@color/gray3"
+                    android:textSize="@dimen/font_36" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>  

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ratingbar="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_noright_common" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ui_30"
+                android:layout_marginRight="@dimen/ui_30"
+                android:layout_marginTop="@dimen/ui_margin_20"
+                android:background="@drawable/white_corner_bg"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rel_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/image_head"
+                        android:layout_width="@dimen/ui_160"
+                        android:layout_height="@dimen/ui_160"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="@dimen/ui_margin_20"
+                        android:src="@drawable/image_head_man" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/ui_margin_20"
+                        android:layout_toRightOf="@+id/image_head"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/text_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center"
+                            android:text="王小明"
+                            android:textColor="@color/gray3"
+                            android:textSize="@dimen/font_36" />
+
+                        <TextView
+                            android:id="@+id/text_gender"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/ui_30"
+                            android:text="性别：男"
+                            android:textColor="@color/gray3"
+                            android:textSize="@dimen/font_28" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/view_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/ui_5"
+                    android:background="@color/color_f0eff5" />
+
+                <TextView
+                    android:id="@+id/text_video_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/ui_90"
+                    android:layout_marginTop="@dimen/margin_85"
+                    android:gravity="center"
+                    android:text="视频时长：0分钟"
+                    android:textColor="@color/gray3"
+                    android:textSize="@dimen/font_48" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ui_30"
+                android:layout_marginRight="@dimen/ui_30"
+                android:layout_marginTop="@dimen/ui_margin_20"
+                android:background="@drawable/white_corner_bg"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/ui_margin_20"
+                    android:paddingLeft="@dimen/ui_margin_20"
+                    android:paddingTop="@dimen/ui_30"
+                    android:text="请您对视频平台进行评价"
+                    android:textColor="@color/gray3"
+                    android:textSize="@dimen/font_36" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_f0eff5" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/ui_30"
+                        android:paddingLeft="@dimen/ui_margin_20"
+                        android:paddingTop="@dimen/ui_30"
+                        android:text="连接稳定"
+                        android:textColor="@color/gray3"
+                        android:textSize="@dimen/font_30" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox_connection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/ui_margin_20"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:button="@null"
+                        android:checked="true"
+                        android:drawableStart="@drawable/selector_checkbox_evaluate"
+                        android:drawableLeft="@drawable/selector_checkbox_evaluate" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/ui_margin_20"
+                    android:layout_marginRight="@dimen/ui_margin_20"
+                    android:background="@color/color_f0eff5" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/ui_30"
+                        android:paddingLeft="@dimen/ui_margin_20"
+                        android:paddingTop="@dimen/ui_30"
+                        android:text="有时卡顿"
+                        android:textColor="@color/gray3"
+                        android:textSize="@dimen/font_30" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox_video_carton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:padding="@dimen/ui_margin_20"
+                        android:button="@null"
+                        android:drawableStart="@drawable/selector_checkbox_evaluate"
+                        android:drawableLeft="@drawable/selector_checkbox_evaluate" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/ui_margin_20"
+                    android:layout_marginRight="@dimen/ui_margin_20"
+                    android:background="@color/color_f0eff5" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/ui_30"
+                        android:paddingLeft="@dimen/ui_margin_20"
+                        android:paddingTop="@dimen/ui_30"
+                        android:text="其他"
+                        android:textColor="@color/gray3"
+                        android:textSize="@dimen/font_30" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox_other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:padding="@dimen/ui_margin_20"
+                        android:button="@null"
+                        android:drawableStart="@drawable/selector_checkbox_evaluate"
+                        android:drawableLeft="@drawable/selector_checkbox_evaluate"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/ui_margin_20"
+                    android:layout_marginRight="@dimen/ui_margin_20"
+                    android:background="@color/color_f0eff5" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/ui_330"
+                    android:layout_marginBottom="@dimen/ui_30"
+                    android:layout_marginLeft="@dimen/ui_margin_20"
+                    android:layout_marginRight="@dimen/ui_margin_20"
+                    android:layout_marginTop="@dimen/ui_60"
+                    android:background="@color/color_fafafa">
+
+                    <EditText
+                        android:id="@+id/edit_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/ui_30"
+                        android:background="@color/color_fafafa"
+                        android:hint="感受百分百满意"
+                        android:paddingBottom="@dimen/ui_5"
+                        android:paddingLeft="@dimen/ui_30"
+                        android:paddingRight="@dimen/ui_30"
+                        android:paddingTop="@dimen/ui_5"
+                        android:textColor="@color/gray3"
+                        android:textSize="@dimen/font_30" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/submit_evaluate"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ui_126"
+                android:layout_marginBottom="@dimen/ui_60"
+                android:layout_marginLeft="@dimen/ui_30"
+                android:layout_marginRight="@dimen/ui_30"
+                android:layout_marginTop="@dimen/ui_70"
+                android:background="@drawable/button_bg"
+                android:gravity="center"
+                android:text="提交评价"
+                android:textColor="@color/gray3"
+                android:textSize="@dimen/font_38"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

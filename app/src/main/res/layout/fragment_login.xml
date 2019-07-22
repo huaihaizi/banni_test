@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navigation_bar_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ui_30"
+        android:layout_marginRight="@dimen/ui_30"
+        android:layout_marginTop="@dimen/ui_60">
+
+        <TextView
+            android:id="@+id/tag1"
+            android:layout_width="@dimen/ui_150"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="@dimen/ui_30"
+            android:paddingTop="@dimen/ui_30"
+            android:text="手机号"
+            android:textColor="@color/color_292929"
+            android:textSize="@dimen/font_34" />
+
+        <EditText
+            android:id="@+id/edit_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/ui_5"
+            android:padding="@dimen/ui_30"
+            android:layout_toRightOf="@+id/tag1"
+            android:background="@color/navigation_bar_bg"
+            android:hint="请输入手机号"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textColor="@color/color_292929"
+            android:textSize="@dimen/font_30" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/ui_30"
+        android:layout_marginRight="@dimen/ui_30"
+        android:background="@color/gray_bg" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ui_30"
+        android:layout_marginRight="@dimen/ui_30">
+
+        <TextView
+            android:id="@+id/tag2"
+            android:layout_width="@dimen/ui_150"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingTop="@dimen/ui_30"
+            android:paddingBottom="@dimen/ui_30"
+            android:text="密码"
+            android:textColor="@color/color_292929"
+            android:textSize="@dimen/font_34" />
+
+        <EditText
+            android:id="@+id/edit_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/ui_5"
+            android:layout_toRightOf="@+id/tag2"
+            android:padding="@dimen/ui_30"
+            android:background="@color/navigation_bar_bg"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/color_292929"
+            android:textSize="@dimen/font_30" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/ui_30"
+        android:layout_marginRight="@dimen/ui_30"
+        android:background="@color/gray_bg" />
+
+    <TextView
+        android:id="@+id/text_forget_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="end"
+        android:padding="@dimen/ui_30"
+        android:text="忘记密码?"
+        android:textColor="@color/color_ffc626"
+        android:textSize="@dimen/font_30"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ui_126"
+        android:layout_marginLeft="@dimen/navigation_bar_edit_margin"
+        android:layout_marginRight="@dimen/navigation_bar_edit_margin"
+        android:layout_marginTop="@dimen/ui_40"
+        android:background="@drawable/button_bg"
+        android:text="登录"
+        android:textColor="@color/gray3"
+        android:textSize="@dimen/font_38"
+        android:textStyle="bold"/>
+</LinearLayout>  

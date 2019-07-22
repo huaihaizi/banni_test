@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/navigation_bar_bg">
+
+    <RelativeLayout
+        android:id="@+id/rel_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/ui_30">
+
+        <com.hanwin.product.viewutils.CircleImageView
+            android:id="@+id/image_head"
+            android:layout_width="@dimen/ui_160"
+            android:layout_height="@dimen/ui_160"
+            android:layout_centerVertical="true"
+            android:src="@drawable/image_head_man" />
+
+        <LinearLayout
+            android:id="@+id/lin_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/ui_margin_20"
+            android:layout_toRightOf="@+id/image_head"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="王小明"
+                    android:textColor="@color/gray3"
+                    android:textSize="@dimen/font_36" />
+
+                <CheckBox
+                    android:id="@+id/check_follow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/ui_30"
+                    android:layout_toRightOf="@+id/text_name"
+                    android:background="@drawable/selector_checkbox"
+                    android:button="@null"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ui_margin_20">
+
+                <TextView
+                    android:id="@+id/text_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="女"
+                    android:textColor="@color/gray3"
+                    android:textSize="@dimen/font_30" />
+
+                <TextView
+                    android:id="@+id/text_line"
+                    android:layout_width="1dp"
+                    android:layout_height="@dimen/ui_30"
+                    android:layout_toRightOf="@+id/text_sex"
+                    android:layout_marginLeft="@dimen/ui_30"
+                    android:layout_centerVertical="true"
+                    android:background="@color/gray" />
+
+                <TextView
+                    android:id="@+id/text_position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/ui_30"
+                    android:layout_toRightOf="@+id/text_line"
+                    android:text="上海"
+                    android:textColor="@color/color_292929"
+                    android:textSize="@dimen/font_30" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/text_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ui_margin_20"
+                android:text="12年翻译年限"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font_24" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_call"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/ui_60"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/lin_content"
+            android:background="@drawable/green_corner_bg"
+            android:gravity="center"
+            android:paddingLeft="@dimen/ui_30"
+            android:paddingRight="@dimen/ui_30"
+            android:text="立即呼叫"
+            android:textColor="@color/navigation_bar_bg"
+            android:textSize="@dimen/font_30" />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_bg"
+        android:layout_below="@+id/rel_lay"/>
+</RelativeLayout>

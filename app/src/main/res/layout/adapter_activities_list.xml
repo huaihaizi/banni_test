@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="@dimen/ui_30"
+    android:layout_marginRight="@dimen/ui_30"
+    android:layout_marginTop="@dimen/ui_30"
+    android:background="@drawable/gray_corner_bg">
+
+    <org.raphets.roundimageview.RoundImageView
+        android:id="@+id/activities_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:type="round"
+        app:leftTop_corner_radius="7dp"
+        app:rightTop_corner_radius="7dp"
+        android:src="@drawable/banner_icon"/>
+
+    <TextView
+        android:id="@+id/text_start_end_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activities_image"
+        android:layout_margin="@dimen/ui_30"
+        android:layout_alignLeft="@+id/activities_image"
+        android:text="2019年6月7日 - 2019年8月1日"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/font_30"/>
+
+</RelativeLayout>

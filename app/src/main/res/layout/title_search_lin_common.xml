@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:paddingRight="@dimen/navigation_bar_edit_margin"
+    android:background="@color/navigation_bar_bg"
+    android:paddingTop="@dimen/navigation_bar_margin"
+    android:paddingBottom="@dimen/navigation_bar_margin">
+
+    <com.hanwin.product.viewutils.CircleImageView
+        android:id="@+id/image_head"
+        android:layout_width="@dimen/ui_60"
+        android:layout_height="@dimen/ui_60"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/ui_30"
+        android:src="@drawable/image_head_man" />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text=""
+        android:textSize="@dimen/font_36"
+        android:textColor="@color/gray3" />
+
+    <TextView
+        android:id="@+id/edit_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ui_70"
+        android:layout_marginRight="@dimen/navigation_bar_edit_margin"
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@+id/imgbtn_back"
+        android:layout_toLeftOf="@+id/image_my"
+        android:drawableLeft="@drawable/title_search"
+        android:gravity="center_vertical"
+        android:background="@color/gray_bg"
+        android:drawablePadding="@dimen/ui_margin_20"
+        android:hint="请输入您的问题"
+        android:textSize="@dimen/font_24"
+        android:paddingLeft="@dimen/ui_margin_20"
+        android:layout_marginLeft="@dimen/navigation_bar_edit_margin"
+        android:visibility="gone"/>
+
+    <com.hanwin.product.viewutils.CircleImageView
+        android:id="@+id/image_my"
+        android:layout_width="@dimen/ui_60"
+        android:layout_height="@dimen/ui_60"
+        android:src="@drawable/image_head_man"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"/>
+
+</RelativeLayout>

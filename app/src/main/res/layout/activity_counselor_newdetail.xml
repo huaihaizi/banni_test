@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ratingbar="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navigation_bar_bg"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_noright_common" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rel_call"
+        android:layout_below="@+id/title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/counselor_detail_bg">
+
+                <com.hanwin.product.viewutils.CircleImageView
+                    android:id="@+id/image_head"
+                    android:layout_width="@dimen/ui_160"
+                    android:layout_height="@dimen/ui_160"
+                    android:layout_marginLeft="@dimen/ui_40"
+                    android:layout_marginTop="@dimen/ui_40"
+                    android:src="@drawable/image_head_man" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/ui_margin_20"
+                    android:layout_toRightOf="@+id/image_head"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:text="王小明"
+                        android:textColor="@color/gray3"
+                        android:textSize="@dimen/font_46"
+                        android:textStyle="bold" />
+
+                    <com.hanwin.product.viewutils.StarBarView
+                        android:id="@+id/starBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="@dimen/ui_5"
+                        ratingbar:starCount="5"
+                        ratingbar:starDistance="5dp"
+                        ratingbar:starEmpty="@drawable/start_normal"
+                        ratingbar:starFill="@drawable/start_checked"
+                        ratingbar:starSize="10dp" />
+
+                    <TextView
+                        android:id="@+id/text_position_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/ui_margin_20"
+                        android:text="上海市"
+                        android:textColor="@color/color_292929"
+                        android:textSize="@dimen/font_30" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ui_30"
+                android:layout_marginTop="@dimen/ui_30"
+                android:drawableLeft="@drawable/interpretation_experience"
+                android:drawablePadding="@dimen/ui_5"
+                android:gravity="center"
+                android:text="翻译经历"
+                android:textColor="@color/color_010101"
+                android:textSize="@dimen/font_34"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_person_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/ui_30"
+                android:layout_marginLeft="@dimen/ui_80"
+                android:layout_marginRight="@dimen/ui_30"
+                android:layout_marginTop="@dimen/ui_35"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="@dimen/ui_5"
+                android:text=""
+                android:textColor="@color/color_292929"
+                android:textSize="@dimen/font_30" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_f5f6fb" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ui_30"
+                android:layout_marginTop="@dimen/ui_40"
+                android:drawableLeft="@drawable/professional_fields"
+                android:drawablePadding="@dimen/ui_5"
+                android:gravity="center"
+                android:text="翻译领域"
+                android:textColor="@color/color_010101"
+                android:textSize="@dimen/font_34"
+                android:textStyle="bold" />
+
+            <com.hanwin.product.viewutils.GridViewInScrollView
+                android:id="@+id/grid_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/ui_30"
+                android:layout_marginLeft="@dimen/ui_80"
+                android:layout_marginRight="@dimen/ui_30"
+                android:layout_marginTop="@dimen/ui_40"
+                android:numColumns="4"
+                android:verticalSpacing="@dimen/ui_margin_20" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_f5f6fb" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ui_30"
+                android:layout_marginTop="@dimen/ui_40"
+                android:drawableLeft="@drawable/sign_language"
+                android:drawablePadding="@dimen/ui_5"
+                android:gravity="center"
+                android:text="手语方言特长"
+                android:textColor="@color/color_010101"
+                android:textSize="@dimen/font_34"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_sign_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/ui_30"
+                android:layout_marginLeft="@dimen/ui_80"
+                android:layout_marginRight="@dimen/ui_30"
+                android:layout_marginTop="@dimen/ui_40"
+                android:gravity="center_vertical"
+                android:text=""
+                android:textColor="@color/color_292929"
+                android:textSize="@dimen/font_30" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/rel_call"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/text_call"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/margin_50"
+            android:layout_marginRight="@dimen/margin_50"
+            android:background="@drawable/button_bg"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="立即呼叫"
+            android:textColor="@color/gray3"
+            android:textSize="@dimen/font_36" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,153 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_bg"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_noright_common" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_above="@+id/text_submit"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ui_40">
+
+                <ImageView
+                    android:id="@+id/image_head"
+                    android:layout_width="@dimen/ui_88"
+                    android:layout_height="@dimen/ui_88"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/image_head_man" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/ui_30"
+                    android:layout_toRightOf="@+id/image_head"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="姓名"
+                        android:textColor="@color/gray3"
+                        android:textSize="@dimen/font_36" />
+
+                    <TextView
+                        android:id="@+id/text_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/ui_5"
+                        android:text="视频时长：15分钟"
+                        android:textColor="@color/color_8f8f8f"
+                        android:textSize="@dimen/font_22" />
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/text_anonymous"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/selector_checkbox_anonymous"
+                    android:drawablePadding="@dimen/ui_5"
+                    android:drawableStart="@drawable/selector_checkbox_anonymous"
+                    android:padding="@dimen/ui_5"
+                    android:text="匿名评价"
+                    android:textColor="@color/color_8f8f8f"
+                    android:textSize="@dimen/font_22" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ui_30"
+                android:layout_marginRight="@dimen/ui_30"
+                android:background="@color/navigation_bar_bg"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tag1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/margin_50"
+                    android:text="评价星级"
+                    android:textColor="@color/gray3"
+                    android:textSize="@dimen/font_34" />
+
+                <com.hanwin.product.viewutils.EvaluateHeartLin
+                    android:id="@+id/heartlin1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/ui_30">
+
+                </com.hanwin.product.viewutils.EvaluateHeartLin>
+
+                <TextView
+                    android:id="@+id/text_leve"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lin_level"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/ui_40"
+                    android:layout_marginTop="@dimen/ui_margin_20"
+                    android:text=""
+                    android:textColor="@color/color_ffc626"
+                    android:textSize="@dimen/font_28" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/ui_340"
+                    android:layout_below="@id/text_leve"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/ui_30"
+                    android:background="@color/gray_bg">
+
+                    <EditText
+                        android:id="@+id/edit_evaluate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/gray_bg"
+                        android:hint="感受百分百满意  绝对会关注"
+                        android:padding="@dimen/ui_30"
+                        android:text=""
+                        android:textColor="@color/gray3"
+                        android:textSize="@dimen/font_26" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/text_submit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ui_126"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/ui_30"
+        android:layout_marginRight="@dimen/ui_30"
+        android:background="@drawable/button_bg"
+        android:gravity="center"
+        android:text="提交评价"
+        android:textColor="@color/gray3"
+        android:textSize="@dimen/font_38" />
+</RelativeLayout>

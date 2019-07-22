@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image_welcome_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/ui_150"
+        android:src="@drawable/welcome_one" />
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/image_welcome_one"
+        android:layout_marginTop="@dimen/ui_30"
+        android:textStyle="bold"
+        android:text="微信登录"
+        android:textSize="@dimen/font_50"
+        android:textColor="@color/color_FF6F4A"/>
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ui_margin_20"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tv"
+        android:text="多种登录方式为你快捷服务"
+        android:textSize="@dimen/font_26"
+        android:textColor="@color/color_FF6F4A"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/welcome_progress_one"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/ui_100"
+        android:visibility="gone"/>
+
+</RelativeLayout>

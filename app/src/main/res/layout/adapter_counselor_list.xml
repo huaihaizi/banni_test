@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ratingbar="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:background="@color/navigation_bar_bg">
+
+        <RelativeLayout
+            android:id="@+id/rel_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/ui_40"
+            android:layout_marginLeft="@dimen/ui_margin_20"
+            android:layout_marginRight="@dimen/ui_margin_20"
+            android:layout_marginTop="@dimen/ui_30">
+
+            <com.hanwin.product.viewutils.CircleImageView
+                android:id="@+id/image_head"
+                android:layout_width="@dimen/ui_160"
+                android:layout_height="@dimen/ui_160"
+                android:src="@drawable/image_head_man" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/ui_margin_20"
+                android:layout_toRightOf="@+id/image_head"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="王小明"
+                    android:textColor="@color/gray3"
+                    android:textSize="@dimen/font_38"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ui_5">
+
+                    <com.hanwin.product.viewutils.StarBarView
+                        android:id="@+id/starBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        ratingbar:starCount="5"
+                        ratingbar:starDistance="5dp"
+                        ratingbar:starEmpty="@drawable/start_normal"
+                        ratingbar:starFill="@drawable/start_checked"
+                        ratingbar:starSize="10dp" />
+
+                    <TextView
+                        android:id="@+id/text_grade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/ui_5"
+                        android:layout_toRightOf="@+id/starBar"
+                        android:gravity="center"
+                        android:text="5分"
+                        android:textColor="@color/color_FFC626"
+                        android:textSize="@dimen/font_24"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/text_translation_orientation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ui_5"
+                    android:text="翻译方向：日常生活"
+                    android:textColor="@color/color_8f8f8f"
+                    android:textSize="@dimen/font_24"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/text_person_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_tag"
+                    android:layout_marginRight="@dimen/ui_30"
+                    android:layout_marginTop="@dimen/ui_5"
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="@dimen/ui_5"
+                    android:maxLines="2"
+                    android:text=""
+                    android:textColor="@color/color_1a1a1a"
+                    android:textSize="@dimen/font_30" />
+
+                <TextView
+                    android:id="@+id/text_sign_language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ui_30"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="手语方言： "
+                    android:textColor="@color/color_808080"
+                    android:textSize="@dimen/font_30" />
+
+                <View
+                    android:id="@+id/view_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/ui_margin_20"
+                    android:background="@color/color_f8f8f8"
+                    android:visibility="gone" />
+
+                <com.hanwin.product.viewutils.GridViewInScrollView
+                    android:id="@+id/grid_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ui_30"
+                    android:horizontalSpacing="@dimen/margin_50"
+                    android:numColumns="3"
+                    android:scrollbars="none"
+                    android:verticalSpacing="@dimen/ui_30" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_call"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/ui_100"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/call_orange_background"
+                android:gravity="center"
+                android:paddingLeft="@dimen/ui_30"
+                android:paddingRight="@dimen/ui_30"
+                android:text="立即呼叫"
+                android:textColor="@color/gray3"
+                android:textSize="@dimen/font_30" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/ui_40"
+            android:layout_marginLeft="@dimen/ui_30"
+            android:layout_marginRight="@dimen/ui_30"
+            android:layout_marginTop="@dimen/ui_30">
+
+            <com.jude.rollviewpager.RollPagerView
+                android:id="@+id/recycler_new_counselor"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ui_300"
+                app:rollviewpager_play_delay="3000"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>
