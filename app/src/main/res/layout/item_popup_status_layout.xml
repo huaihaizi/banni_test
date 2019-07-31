@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/item_layout"
-    android:layout_width="130dp"
-    android:layout_height="40dp"
-    android:background="@color/color_ffc626"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/dp_10"
+    android:layout_marginRight="@dimen/dp_10"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/textview_status"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_above="@+id/line_view"
-        android:layout_marginLeft="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_10"
-        android:ellipsize="marquee"
-        android:gravity="center"
-        android:marqueeRepeatLimit="marquee_forever"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:paddingTop="@dimen/dp_10"
         android:paddingBottom="@dimen/dp_10"
-        android:scrollHorizontally="true"
-        android:singleLine="true"
         android:text="全部状态"
         android:textColor="@color/color_000000"
         android:textSize="14sp" />
@@ -28,7 +22,6 @@
         android:id="@+id/line_view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/color_f2bc24" />
+        android:background="@color/color_f0eff5" />
 
-</RelativeLayout>
+</LinearLayout>

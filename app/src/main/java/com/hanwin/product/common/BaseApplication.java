@@ -36,6 +36,7 @@ import com.tencent.imsdk.session.SessionWrapper;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.tencent.qcloudtts.RealtimeTTS.RealtimeTtsController;
+import com.tencent.qcloudtts.VoiceSpeed;
 import com.umeng.commonsdk.UMConfigure;
 
 import java.io.File;
@@ -170,7 +171,7 @@ public class BaseApplication extends Application {
         controller = new RealtimeTtsController();
         controller.init(Long.valueOf(Contants.appid), Contants.secretId, Contants.secretKey);
         //设置语速
-        controller.setVoiceSpeed(1);
+        controller.setVoiceSpeed(0);
         //设置音色
         controller.setVoiceType(0);
         //设置音量

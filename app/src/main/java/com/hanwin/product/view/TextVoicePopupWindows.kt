@@ -15,6 +15,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hanwin.product.R
 import com.hanwin.product.home.bean.VoiceListBean
+import com.hanwin.product.utils.Contants.list
 import org.jetbrains.anko.longToast
 import java.util.*
 
@@ -27,6 +28,7 @@ class TextVoicePopupWindows : PopupWindow {
     var context: Context
     lateinit var recyclerView: RecyclerView
     lateinit var rootLayout: LinearLayout
+    lateinit var button_cancle: TextView
     lateinit var list: ArrayList<String>
     lateinit var adapter: TextVoicePopupAdapter
     lateinit var listener: PopupWindowsItemListener
@@ -43,27 +45,30 @@ class TextVoicePopupWindows : PopupWindow {
      */
     private fun init() {
         list = ArrayList()
-        // 好的，明白，谢谢您，再见，我知道了
-        list.add("好的")
-        list.add("明白")
-        list.add("谢谢您")
-        list.add("再见")
-        list.add("我知道了")
+        list.add("你好,我听力不好，请对着手机说话，手机会将 您的声音转化成文字，谢谢！")
+        list.add("请您稍微讲慢一点，这样软件可以翻译的更加准确")
+        list.add("我正在打字跟您沟通，请您多等一会")
         val inflater: LayoutInflater = LayoutInflater.from(context)
         var recordingView = inflater.inflate(R.layout.popup_text_voice_layout, null)
         this.contentView = recordingView
-        recyclerView = contentView.findViewById(R.id.recycle_view)
+        recyclerView = contentView.findViewById(R.id.language_recycle_view)
         rootLayout = contentView.findViewById(R.id.root_layout)
-        this.width = ViewGroup.LayoutParams.WRAP_CONTENT// 设置弹出窗口的宽
-        this.height = ViewGroup.LayoutParams.WRAP_CONTENT// 设置弹出窗口的高
+        button_cancle = contentView.findViewById(R.id.button_cancle)
+        // 设置弹出窗口的宽
+        this.width = ViewGroup.LayoutParams.MATCH_PARENT
+        // 设置弹出窗口的高
+        this.height = ViewGroup.LayoutParams.MATCH_PARENT
         //实例化一个ColorDrawable颜色为半透明
         val colorDrawable = ColorDrawable(
-                context.getResources().getColor(R.color.translucence))
+                context.getResources().getColor(R.color.color_50_000000))
         this.setBackgroundDrawable(colorDrawable)
         this.isFocusable = true// 设置弹出窗口可
         this.isTouchable = true
-        this.isOutsideTouchable = false
+        this.isOutsideTouchable = true
         initRecycleView()
+        button_cancle.setOnClickListener {
+            dismiss()
+        }
     }
 
     /*
@@ -74,9 +79,9 @@ class TextVoicePopupWindows : PopupWindow {
     private fun initRecycleView() {
         adapter = TextVoicePopupAdapter(list)
         recyclerView?.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false))
-        if (list != null && list.size > 10) {
+        if (list != null && list.size > 3) {
             var lp = recyclerView.layoutParams
-            lp.height = context.resources.getDimension(R.dimen.dp_40).toInt() * 10
+            lp.height = context.resources.getDimension(R.dimen.dp_40).toInt() * 3
             recyclerView.setLayoutParams(lp)
         }
         recyclerView?.adapter = adapter
@@ -95,9 +100,6 @@ class TextVoicePopupWindows : PopupWindow {
         this@TextVoicePopupWindows.listener = listener
     }
 
-
-    // class
-
     /**
      * TODO 常用语
      * @acthor weiang
@@ -106,6 +108,12 @@ class TextVoicePopupWindows : PopupWindow {
     class TextVoicePopupAdapter(data: ArrayList<String>?) : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_popup_status_layout, data) {
         override fun convert(helper: BaseViewHolder?, item: String?) {
             var textview_status: TextView = helper?.getView(R.id.textview_status)!!
+            var lint: View = helper?.getView(R.id.line_view)!!
+            if (helper.adapterPosition == data.size - 1) {
+                lint.visibility = View.GONE
+            } else {
+                lint.visibility = View.VISIBLE
+            }
             textview_status.isSelected = true
             textview_status.text = item
         }
@@ -120,7 +128,6 @@ class TextVoicePopupWindows : PopupWindow {
         }
         super.showAsDropDown(anchor)
     }
-
 
     //点击监听
     interface PopupWindowsItemListener {

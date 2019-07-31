@@ -105,8 +105,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:visibility="gone"
-            android:layout_gravity="bottom">
+            android:layout_gravity="bottom"
+            android:visibility="gone">
 
             <View
                 android:layout_width="match_parent"
@@ -123,10 +123,10 @@
                 android:layout_marginBottom="@dimen/dp_10"
                 android:layout_toLeftOf="@+id/button_confirm"
                 android:background="@drawable/shape_text_white_bg"
-                android:textColorHint="@color/color_dadada"
                 android:hint="输入文字"
                 android:padding="@dimen/dp_10"
                 android:textColor="@color/colorAccent"
+                android:textColorHint="@color/color_dadada"
                 android:textSize="21sp" />
 
             <TextView
@@ -186,6 +186,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="5dp"
+                        android:gravity="center"
                         android:text="键盘"
                         android:textColor="@color/color_010101"
                         android:textSize="14sp" />
@@ -229,11 +230,13 @@
                     </RelativeLayout>
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/text_listen"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
-                        android:text="语音"
+                        android:gravity="center"
+                        android:text="听"
                         android:textColor="@color/color_010101"
                         android:textSize="14sp" />
 
@@ -271,6 +274,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="5dp"
+                        android:gravity="center"
                         android:text="选择常用语"
                         android:textColor="@color/color_010101"
                         android:textSize="14sp" />

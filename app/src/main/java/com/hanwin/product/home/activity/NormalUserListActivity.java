@@ -57,6 +57,7 @@ import com.hanwin.product.viewutils.MarqueeTextView;
 import com.hanwin.product.viewutils.MyDropDownMenu;
 import com.hanwin.product.viewutils.pulltorefresh.PullToRefreshLayout;
 import com.hanwin.product.viewutils.pulltorefresh.pullableview.PullableScrollView;
+import com.huawei.android.pushagent.PushManager;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -219,7 +220,7 @@ public class NormalUserListActivity extends BaseActivity implements ILoginView {
         if (!"".equals(BaseApplication.getInstance().getToken())) {
             User user = BaseApplication.getInstance().getUser();
             if (user != null) {
-//                statisticalStartupTimes();//统计已登录用户的启动次数
+                //   statisticalStartupTimes();//统计已登录用户的启动次数
                 if (!TextUtils.isEmpty(user.getUid())) {
                     loginHelper.loginSDK(user.getUid(), user.getSignature());
                 } else {
@@ -233,6 +234,8 @@ public class NormalUserListActivity extends BaseActivity implements ILoginView {
     @Override
     protected void onResume() {
         super.onResume();
+        PushManager.requestToken(BaseApplication.getInstance());
+        //RegisterUtils.initPushMessage();
         text_title.setText("手语翻译");
         if (!TextUtils.isEmpty(BaseApplication.getInstance().getToken())) {
             isTodayFirstLogin();//判断是否每天第一次启动
@@ -277,6 +280,7 @@ public class NormalUserListActivity extends BaseActivity implements ILoginView {
                     .apply(options)
                     .into(image_head);
         }
+
     }
 
     /**

@@ -20,6 +20,7 @@ import com.tencent.aai.model.AudioRecognizeRequest
 import com.tencent.aai.model.AudioRecognizeResult
 import com.tencent.aai.model.type.AudioRecognizeConfiguration
 import com.tencent.aai.model.type.AudioRecognizeTemplate
+import com.tencent.aai.model.type.EngineModelType
 
 /**
  * TODO:语音识别服务
@@ -63,7 +64,7 @@ class AudioRecognizeService : Service() {
      * @acthor weiang
      * 2019/7/8 11:28 AM
      */
-    public fun initVoiceRecognition(activity: Activity) {
+    fun initVoiceRecognition(activity: Activity) {
         // 为了方便用户测试，sdk提供了本地签名，但是为了secretKey的安全性，正式环境下请自行在第三方服务器上生成签名。
         val credentialProvider = LocalCredentialProvider(Contants.secretKey)
         // 1、初始化AAIClient对象。
@@ -76,7 +77,7 @@ class AudioRecognizeService : Service() {
         audioRecognizeRequest = AudioRecognizeRequest.Builder()
                 .pcmAudioDataSource(AudioRecordDataSource()) // 设置语音源为麦克风输入
                 //.templateName(templateName) // 设置模板
-                .template(AudioRecognizeTemplate(1, 0, 0)) // 设置自定义模板
+                .template(AudioRecognizeTemplate(EngineModelType.EngineModelType16K, 0, 0)) // 设置自定义模板
                 .build()
         // 自定义识别配置
         audioRecognizeConfiguration = AudioRecognizeConfiguration.Builder()

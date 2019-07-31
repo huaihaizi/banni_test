@@ -12,11 +12,11 @@ public class Contants {
     public static final String TOKEN = "token";
     public static final String PROPERTY_JSON = "property_json";
 
-//    public static String BASE_URL = "http://jz.hanwin.com.cn/";//生产环境
+    public static String BASE_URL = "http://jz.hanwin.com.cn/";//生产环境
 
-    //    public static String BASE_URL = "http://210.22.136.174:8888/";//外网测试接口地址
+//    public static String BASE_URL = "http://210.22.136.174:8888/";//外网测试接口地址
 //    public static String BASE_URL = "http://192.168.20.33:9123/";//开发环境
-    public static String BASE_URL = "http://47.103.64.77:9123/";//测试环境
+//    public static String BASE_URL = "http://47.103.64.77:9123/";//测试环境
 //    public static String BASE_URL = "http://192.168.10.33:9123/";
 //    public static String BASE_URL = "http://192.168.20.35:8888/baseProject/";//内网测试接口地址
 //    public static String BASE_URL = "http://192.168.20.31:8888/baseProject/";//本机内网测试接口地址
@@ -67,5 +67,5 @@ public class Contants {
     public static boolean isInRoom = false;//是否在视频房间里
     public static boolean flag = false;//在非登录的情况下，然后登录后未实名认证设为true
     public static boolean isActivtiesLogin = false;//是否是活动界面跳转登录
-
+    
 }

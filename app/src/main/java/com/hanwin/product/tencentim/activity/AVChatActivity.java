@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.media.AudioRecord;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
@@ -46,12 +48,15 @@ import com.hanwin.product.tencentim.observable.AVChatTimeoutObserver;
 import com.hanwin.product.tencentim.observable.Observer;
 import com.hanwin.product.tencentim.util.AudioByteDataSource;
 import com.hanwin.product.tencentim.util.PushUtil;
+import com.hanwin.product.utils.AppUtils;
 import com.hanwin.product.utils.Contants;
 import com.hanwin.product.utils.FileUtil;
 import com.hanwin.product.utils.MD5Utils;
 import com.hanwin.product.utils.TimeUtils;
 import com.hanwin.product.utils.ToastUtils;
 import com.hanwin.product.utils.Utils;
+import com.hanwin.product.utils.recorder.AudioRecorder;
+import com.hanwin.product.utils.recorder.RecordStreamListener;
 import com.tencent.aai.AAIClient;
 import com.tencent.aai.audio.data.AudioRecordDataSource;
 import com.tencent.aai.auth.AbsCredentialProvider;
@@ -64,6 +69,7 @@ import com.tencent.aai.model.AudioRecognizeRequest;
 import com.tencent.aai.model.AudioRecognizeResult;
 import com.tencent.aai.model.type.AudioRecognizeConfiguration;
 import com.tencent.aai.model.type.AudioRecognizeTemplate;
+import com.tencent.aai.model.type.EngineModelType;
 import com.tencent.liteav.TXLiteAVCode;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import com.tencent.trtc.TRTCCloud;
@@ -72,6 +78,7 @@ import com.tencent.trtc.TRTCCloudListener;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
@@ -183,6 +190,9 @@ public class AVChatActivity extends BaseActivity implements View.OnClickListener
     //默认是竖屏状态，由于由于系统默认的是横屏，所以需要旋转90
     int rotationRecord = 90;
     private boolean isVerticalScreen = true;
+
+    private AudioRecorder audioRecorder;
+
     @SuppressLint("HandlerLeak")
     Handler messageHandler = new Handler() {
         @Override
@@ -255,15 +265,13 @@ public class AVChatActivity extends BaseActivity implements View.OnClickListener
             Contants.list.clear();
         }
         avChatSoundPlayer = new AVChatSoundPlayer();
-
         //创建 TRTC SDK 实例
         trtcListener = new TRTCCloudListenerImpl(this);
         trtcCloud = TRTCCloud.sharedInstance(this);
         trtcCloud.setListener(trtcListener);
         Log.e("sdkversion == ", TRTCCloud.getSDKVersion());
-
         initView();
-//        rotationUIListener();
+//      rotationUIListener();
     }
 
 
@@ -274,7 +282,6 @@ public class AVChatActivity extends BaseActivity implements View.OnClickListener
         orderId = getIntent().getStringExtra("orderId");
         mIsInComingCall = getIntent().getBooleanExtra("mIsInComingCall", false);
         imageHead = getIntent().getStringExtra("imageHead");
-
         text_answer.setOnClickListener(this);
         text_reject.setOnClickListener(this);
         text_hang_up.setOnClickListener(this);
@@ -326,10 +333,26 @@ public class AVChatActivity extends BaseActivity implements View.OnClickListener
             long[] patter = {1000, 1000, 2000, 50};
             vibrator.vibrate(patter, 0);
         }
-
         dismissKeyguard();
         AVChatTimeoutObserver.getInstance().observeTimeoutNotification(timeoutObserver, true, mIsInComingCall);
         clearNotification();
+
+        audioRecorder = new AudioRecorder();
+        audioRecorder.createDefaultAudio("banni_test");
+        audioRecorder.setListener(new RecordStreamListener() {
+            @Override
+            public void recordOfByte(byte[] data, int begin, int end) {
+                if (trtcCloud != null) {
+                    TRTCCloudDef.TRTCAudioFrame trtcAudioFrame = new TRTCCloudDef.TRTCAudioFrame();
+                    trtcAudioFrame.data = data;
+                    trtcAudioFrame.sampleRate = 48000;
+                    trtcAudioFrame.timestamp = System.currentTimeMillis();
+                    Log.d("radio", "---------data-()--->:" + Arrays.toString(data));
+                    trtcCloud.sendCustomAudioData(trtcAudioFrame);
+                }
+            }
+        });
+
     }
 
 
@@ -399,13 +422,15 @@ public class AVChatActivity extends BaseActivity implements View.OnClickListener
         encParam.videoBitrate = 600;
         encParam.videoResolutionMode = TRTCCloudDef.TRTC_VIDEO_RESOLUTION_MODE_PORTRAIT;
         trtcCloud.setVideoEncoderParam(encParam);
-
         TRTCCloudDef.TRTCNetworkQosParam qosParam = new TRTCCloudDef.TRTCNetworkQosParam();
         qosParam.controlMode = TRTCCloudDef.VIDEO_QOS_CONTROL_SERVER;
         qosParam.preference = TRTCCloudDef.TRTC_VIDEO_QOS_PREFERENCE_CLEAR;
         trtcCloud.setNetworkQosParam(qosParam);
         // 美颜
         trtcCloud.setBeautyStyle(TRTCCloudDef.TRTC_BEAUTY_STYLE_SMOOTH, 5, 5, 5);
+
+        //TODO:开启本地音频采集
+        trtcCloud.enableCustomAudioCapture(true);
     }
 
     /**
@@ -421,7 +446,27 @@ public class AVChatActivity extends BaseActivity implements View.OnClickListener
             small_view.setVisibility(View.INVISIBLE);
             trtcCloud.startLocalPreview(true, big_view);
             trtcCloud.setLocalViewFillMode(TRTCCloudDef.TRTC_VIDEO_RENDER_MODE_FILL);
-            trtcCloud.startLocalAudio();
+
+            //TODO:开启本地音频采集
+            trtcCloud.setAudioFrameListener(new TRTCCloudListener.TRTCAudioFrameListener() {
+                @Override
+                public void onCapturedAudioFrame(TRTCCloudDef.TRTCAudioFrame trtcAudioFrame) {
+                    Log.d("hhh", "--------onCapturedAudioFrame-------------->:" + trtcAudioFrame.data);
+                }
+
+                @Override
+                public void onPlayAudioFrame(TRTCCloudDef.TRTCAudioFrame trtcAudioFrame, String s) {
+
+                }
+
+                @Override
+                public void onMixedPlayAudioFrame(TRTCCloudDef.TRTCAudioFrame trtcAudioFrame) {
+
+                }
+            });
+            //(String fileName, int audioSource, int sampleRateInHz, int channelConfig, int audioFormat
+            audioRecorder.startRecord();
+            //trtcCloud.startLocalAudio();
             //进房
             trtcCloud.enterRoom(trtcParams, TRTCCloudDef.TRTC_APP_SCENE_VIDEOCALL);
         } catch (Exception e) {
@@ -443,7 +488,7 @@ public class AVChatActivity extends BaseActivity implements View.OnClickListener
      */
     private void switchCamera() {
         trtcCloud.switchCamera();
-        if(!isVerticalScreen){
+        if (!isVerticalScreen) {
             trtcCloud.setVideoEncoderRotation(TRTCCloudDef.TRTC_VIDEO_ROTATION_0);
         }
     }
@@ -920,7 +965,7 @@ public class AVChatActivity extends BaseActivity implements View.OnClickListener
             audioRecognizeRequest = new AudioRecognizeRequest.Builder()
                     .pcmAudioDataSource(new AudioRecordDataSource()) // 设置语音源为麦克风输入
                     //.templateName(templateName) // 设置模板
-                    .template(new AudioRecognizeTemplate(1, 0, 0)) // 设置自定义模板
+                    .template(new AudioRecognizeTemplate(EngineModelType.EngineModelType16K, 0, 0)) // 设置自定义模板
                     .build();
             // 自定义识别配置
             final AudioRecognizeConfiguration audioRecognizeConfiguration = new AudioRecognizeConfiguration.Builder()
@@ -1168,21 +1213,22 @@ public class AVChatActivity extends BaseActivity implements View.OnClickListener
 
     /**
      * 处理字幕，只显示最后的两行
+     *
      * @param tv
      */
-    private void dealStr(final TextView tv){
+    private void dealStr(final TextView tv) {
         ViewTreeObserver observer = tv.getViewTreeObserver(); //tv为TextView控件
         observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                Layout layout =tv.getLayout();
+                Layout layout = tv.getLayout();
                 int line = tv.getLineCount();
                 String text = tv.getText().toString();
-                if(line > 2){
-                    int start = layout.getLineStart(line-1);
-                    int end = layout.getLineEnd(line-1);
-                    int start1 = layout.getLineStart(line-2);
-                    int end1 = layout.getLineEnd(line-2);
+                if (line > 2) {
+                    int start = layout.getLineStart(line - 1);
+                    int end = layout.getLineEnd(line - 1);
+                    int start1 = layout.getLineStart(line - 2);
+                    int end1 = layout.getLineEnd(line - 2);
                     String re = text.substring(start, end);
                     String re1 = text.substring(start1, end1);
                     tv.setText(re1 + re);

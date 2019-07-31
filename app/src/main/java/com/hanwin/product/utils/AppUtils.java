@@ -99,6 +99,21 @@ public class AppUtils {
     }
 
     /**
+     * TODO:腾讯语音合成
+     * @acthor weiang
+     * 2019/7/12 1:58 PM
+     */
+    public static void tencentStopSpeek() {
+        try {
+            BaseApplication.controller.stop();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    /**
      * TODO:百度语音合成
      *
      * @acthor weiang

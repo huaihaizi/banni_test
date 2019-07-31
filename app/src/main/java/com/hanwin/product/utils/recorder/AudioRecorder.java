@@ -26,15 +26,15 @@ public class AudioRecorder {
     //音频输入-麦克风
     private final static int AUDIO_INPUT = MediaRecorder.AudioSource.MIC;
     //采用频率
-    //44100是目前的标准，但是某些设备仍然支持22050，16000，11025
+    //44100是目前的标准，但是某些设备仍然支持22050，16000，11025 48000
     //采样频率一般共分为22.05KHz、44.1KHz、48KHz三个等级
-    private final static int AUDIO_SAMPLE_RATE = 16000;
+    private final static int AUDIO_SAMPLE_RATE = 48000;
     //声道 单声道
     private final static int AUDIO_CHANNEL = AudioFormat.CHANNEL_IN_MONO;
     //编码
     private final static int AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
     // 缓冲区字节大小
-    private int bufferSizeInBytes = 0;
+    private int bufferSizeInBytes = 1920;
     //录音对象
     private AudioRecord audioRecord;
     //录音状态
@@ -48,6 +48,7 @@ public class AudioRecorder {
     private ExecutorService mExecutorService;
     //录音监听
     private RecordStreamListener listener;
+
     public AudioRecorder() {
         mExecutorService = Executors.newCachedThreadPool();
     }
@@ -80,11 +81,10 @@ public class AudioRecorder {
 
     /**
      * 开始录音
-     *
      */
     public void startRecord() {
 
-        if (status == Status.STATUS_NO_READY||audioRecord==null) {
+        if (status == Status.STATUS_NO_READY || audioRecord == null) {
             throw new IllegalStateException("录音尚未初始化,请检查是否禁止了录音权限~");
         }
         if (status == Status.STATUS_START) {
@@ -101,7 +101,7 @@ public class AudioRecorder {
         }
         filesName.add(currentFileName);
 
-        final String finalFileName=currentFileName;
+        final String finalFileName = currentFileName;
         //将录音状态设置成正在录音状态
         status = Status.STATUS_START;
 
@@ -194,7 +194,6 @@ public class AudioRecorder {
 
     /**
      * 将音频信息写入文件
-     *
      */
     private void writeDataTOFile(String currentFileName) {
         // new一个byte数组用来存一些字节数据，大小为缓冲区大小
@@ -222,15 +221,12 @@ public class AudioRecorder {
                     fos.write(audiodata);
                     if (listener != null) {
                         //用于拓展业务
-//                        listener.onRecording(audiodata, 0, audiodata.length);
+                        listener.recordOfByte(audiodata, 0, audiodata.length);
                     }
                 } catch (IOException e) {
                     Log.e("AudioRecorder", e.getMessage());
                 }
             }
-        }
-        if (listener != null) {
-//            listener.finishRecord();
         }
         try {
             if (fos != null) {

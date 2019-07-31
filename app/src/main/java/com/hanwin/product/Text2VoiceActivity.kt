@@ -3,6 +3,7 @@ package com.hanwin.product
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.view.animation.LinearOutSlowInInterpolator
@@ -15,10 +16,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.RelativeLayout
-import android.widget.TextView
 import android.widget.Toast
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
 import com.hanwin.product.common.BaseActivity
 import com.hanwin.product.home.adapter.TextVoiceAdapter
 import com.hanwin.product.home.bean.VoiceListBean
@@ -27,28 +25,35 @@ import com.hanwin.product.listener.AudioRecognizeListener
 import com.hanwin.product.utils.AppUtils
 import com.hanwin.product.utils.PermissionUtil
 import com.hanwin.product.utils.SpaceItemDecoration
-import com.hanwin.product.utils.ToastUtils.context
+import com.hanwin.product.view.TextVoicePopupWindows
+import com.tencent.qcloudtts.callback.QCloudPlayerCallback
 import kotlinx.android.synthetic.main.activity_text_voice.*
 import kotlinx.android.synthetic.main.popup_text_voice_layout.*
 
-class Text2VoiceActivity : BaseActivity(), AudioRecognizeListener {
+class Text2VoiceActivity : BaseActivity(), AudioRecognizeListener, TextVoicePopupWindows.PopupWindowsItemListener {
     var isAudioStart = false
     lateinit var adapter: TextVoiceAdapter
     lateinit var list: ArrayList<VoiceListBean>
     var handler: Handler? = Handler()
     lateinit var service: AudioRecognizeService
     var textContent: String = ""
-    lateinit var languageList: ArrayList<String>
-    lateinit var languageAdapter: TextVoicePopupAdapter
     lateinit var edit_layout: RelativeLayout
+    lateinit var popupWindow: TextVoicePopupWindows
+
+    companion object {
+        //当前播放位置
+        var currPlayPosition: Int = -1
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         PermissionUtil.permissionVideo(this)
         setContentView(R.layout.activity_text_voice)
         edit_layout = findViewById(R.id.edit_layout)
+        popupWindow = TextVoicePopupWindows(this)
+        popupWindow.setOnPopupItemClickListener(this)
         initRecycleView()
-        initLanguageRecycleView()
+        //initLanguageRecycleView()
         service = AudioRecognizeService()
         service.setAudioRecognizeListener(this)
         val intent = Intent(this, service.javaClass)
@@ -58,6 +63,97 @@ class Text2VoiceActivity : BaseActivity(), AudioRecognizeListener {
         waveview.setStyle(Paint.Style.FILL)
         waveview.setColor(Color.parseColor("#FF4500"))
         waveview.setInterpolator(LinearOutSlowInInterpolator())
+        initEventLister()
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (service != null) {
+            service.stopRecognize()
+        }
+    }
+
+    /**
+     * TODO 初始化recycleview
+     * @acthor weiang
+     * 2019/3/18 6:04 PM
+     */
+    fun initRecycleView() {
+        list = ArrayList<VoiceListBean>()
+        var bean = VoiceListBean()
+        bean.text = "你好，我听力不好，请对着手机说话，手机会将您的声音转化成文字,谢谢"
+        bean.type = 2
+        list.add(bean)
+        adapter = TextVoiceAdapter(list)
+        val layoutManager = LinearLayoutManager(this)
+        //设置布局管理器
+        recycle_view.setLayoutManager(layoutManager)
+        //设置为垂直布局，这也是默认的
+        layoutManager.orientation = OrientationHelper.VERTICAL
+        recycle_view.addItemDecoration(SpaceItemDecoration(2))
+        //设置Adapter
+        recycle_view.setAdapter(adapter)
+        adapter.bindToRecyclerView(recycle_view)
+        adapter.setNewData(list)
+
+        //文字读取
+        adapter.setOnItemChildClickListener { adapter, view, position ->
+            var item: VoiceListBean = list?.get(position)
+            if (currPlayPosition != -1 && !((currPlayPosition == position) && item.isPlay)) {
+                try {
+                    var playItem: VoiceListBean = list?.get(currPlayPosition)
+                    var imageView = this.adapter.getViewByPosition(currPlayPosition, R.id.image_view)
+                    if (playItem.isPlay) {
+                        AppUtils.tencentStopSpeek()
+                        (imageView?.background as AnimationDrawable).stop()
+                        (imageView?.background as AnimationDrawable).selectDrawable(0)
+                        playItem!!.isPlay = false
+                        list.get(currPlayPosition).isPlay = false
+                    }
+                } catch (e: Exception) {
+                    Log.d("vvv", "----------Exception---------------" + e.message)
+                }
+            }
+            if (!item!!.isPlay) {
+                currPlayPosition = position
+                item!!.isPlay = true
+                list.get(position)?.isPlay = true
+                AppUtils.tencentSpeek(item?.text, object : QCloudPlayerCallback {
+                    override fun onTTSPlayStart() {
+                        (view.background as AnimationDrawable).start()
+                    }
+
+                    override fun onTTSPlayWait() {
+                    }
+
+                    override fun onTTSPlayNext() {
+                    }
+
+                    override fun onTTSPlayStop() {
+                    }
+
+                    override fun onTTSPlayEnd() {
+                        (view.background as AnimationDrawable).stop()
+                        (view.background as AnimationDrawable).selectDrawable(0)
+                        list.get(position)?.isPlay = false
+                        currPlayPosition = -1
+                    }
+
+                    override fun onTTSPlayResume() {
+                    }
+                })
+            }
+        }
+    }
+
+
+    /**
+     * TODO:初始化时间监听
+     * @acthor weiang
+     * 2019/7/30 3:48 PM
+     */
+    fun initEventLister(){
         image_back.setOnClickListener {
             finish()
         }
@@ -71,34 +167,14 @@ class Text2VoiceActivity : BaseActivity(), AudioRecognizeListener {
         }
 
         language_image.setOnClickListener {
-            if (View.GONE == language_list_layout.visibility) {
-                if (isAudioStart) {
-                    service.stopRecognize()
-                    waveview.stop()
-                }
-                language_list_layout.visibility = View.VISIBLE
-            } else {
-                if (isAudioStart) {
-                    service.startRecognize(this)
-                    waveview.start()
-                }
-                language_list_layout.visibility = View.GONE
+            if (popupWindow != null && !popupWindow.isShowing) {
+                popupWindow.showAtLocation(root_layout, Gravity.BOTTOM, 0, 0)
             }
         }
 
         language_edit.setOnClickListener {
-            if (View.GONE == language_list_layout.visibility) {
-                if (isAudioStart) {
-                    service.stopRecognize()
-                    waveview.stop()
-                }
-                language_list_layout.visibility = View.VISIBLE
-            } else {
-                if (isAudioStart) {
-                    service.startRecognize(this)
-                    waveview.start()
-                }
-                language_list_layout.visibility = View.GONE
+            if (popupWindow != null && !popupWindow.isShowing) {
+                popupWindow.showAtLocation(root_layout, Gravity.BOTTOM, 0, 0)
             }
         }
 
@@ -131,12 +207,14 @@ class Text2VoiceActivity : BaseActivity(), AudioRecognizeListener {
                     toast.setGravity(Gravity.CENTER, 0, 0)
                     toast.show()
                     service.startRecognize(this)
+                    text_listen.text = "正在听..."
                     waveview.start()
                 } else {
                     var toast = Toast.makeText(this, "结束", Toast.LENGTH_LONG)
                     toast.setGravity(Gravity.CENTER, 0, 0)
                     toast.show()
                     service.stopRecognize()
+                    text_listen.text = "听"
                     waveview.stop()
                 }
                 isAudioStart = !isAudioStart
@@ -152,6 +230,7 @@ class Text2VoiceActivity : BaseActivity(), AudioRecognizeListener {
                 var voiceListBean = VoiceListBean()
                 voiceListBean.text = textContent
                 voiceListBean.type = 2
+                voiceListBean.isPlay = true
                 list.add(voiceListBean)
                 adapter.setNewData(list)
                 activityVoiceId = ""
@@ -166,6 +245,7 @@ class Text2VoiceActivity : BaseActivity(), AudioRecognizeListener {
                 select_layout.visibility = View.VISIBLE
                 AppUtils.closeKeyboard(this, edit_text)
                 if (isAudioStart) {
+                    text_listen.text = "正在听..."
                     service.startRecognize(this)
                     waveview.start()
                 }
@@ -195,57 +275,6 @@ class Text2VoiceActivity : BaseActivity(), AudioRecognizeListener {
             edit_text.requestFocus()
             AppUtils.showKeyboard(this, edit_text)
         }
-
-    }
-
-    override fun onPause() {
-        super.onPause()
-        if (service != null) {
-            service.stopRecognize()
-        }
-    }
-
-    /**
-     * TODO 初始化recycleview
-     * @acthor weiang
-     * 2019/3/18 6:04 PM
-     */
-    fun initRecycleView() {
-        list = ArrayList<VoiceListBean>()
-        adapter = TextVoiceAdapter(list)
-        val layoutManager = LinearLayoutManager(this)
-        //设置布局管理器
-        recycle_view.setLayoutManager(layoutManager)
-        //设置为垂直布局，这也是默认的
-        layoutManager.orientation = OrientationHelper.VERTICAL
-        recycle_view.addItemDecoration(SpaceItemDecoration(2))
-        //设置Adapter
-        recycle_view.setAdapter(adapter)
-    }
-
-    fun initLanguageRecycleView() {
-        //常用语列表初始化
-        language_recycle_view?.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false))
-        languageList = ArrayList<String>()
-        languageList.add("好的")
-        languageList.add("明白")
-        languageList.add("谢谢您")
-        languageList.add("再见")
-        languageList.add("我知道了")
-        languageAdapter = TextVoicePopupAdapter(languageList)
-        language_recycle_view.adapter = languageAdapter
-        languageAdapter.setOnItemClickListener { l, view, position ->
-            activityVoiceId = ""
-            var voiceListBean = VoiceListBean()
-            var s: String = languageList.get(position)
-            voiceListBean.text = s
-            voiceListBean.type = 2
-            list.add(voiceListBean!!)
-            adapter.setNewData(list)
-            recycle_view.smoothScrollToPosition(adapter.itemCount - 1)
-            language_list_layout.visibility = View.GONE
-        }
-
     }
 
     var activityVoiceId = ""
@@ -272,18 +301,12 @@ class Text2VoiceActivity : BaseActivity(), AudioRecognizeListener {
         Log.d("onSuccess", "--------------4--------------->: " + text)
     }
 
-
-    /**
-     * TODO 常用语
-     * @acthor weiang
-     * 2019/3/19 2:49 PM
-     */
-    class TextVoicePopupAdapter(data: ArrayList<String>?) : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_popup_status_layout, data) {
-        override fun convert(helper: BaseViewHolder?, item: String?) {
-            var textview_status: TextView = helper?.getView(R.id.textview_status)!!
-            textview_status.isSelected = true
-            textview_status.text = item
-        }
+    override fun onPopupItemClick(item: VoiceListBean?) {
+        activityVoiceId = ""
+        item?.isPlay = true
+        list.add(item!!)
+        adapter.setNewData(list)
+        recycle_view.smoothScrollToPosition(adapter.itemCount - 1)
     }
 
 

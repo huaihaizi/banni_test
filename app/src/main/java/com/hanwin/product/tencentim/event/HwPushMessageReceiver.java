@@ -21,8 +21,8 @@ import java.util.List;
  */
 public class HwPushMessageReceiver extends PushEventReceiver {
     private final String TAG = "HwPushMessageReceiver";
-//    private long mBussId = 4574;//正式的
-    private long mBussId = 4663;//测试的
+    private long mBussId = 4574;//正式的
+//    private long mBussId = 4663;//测试的
 
     @Override
     public void onToken(Context context, String token, Bundle extras){
@@ -30,17 +30,24 @@ public class HwPushMessageReceiver extends PushEventReceiver {
         String content = "获取token和belongId成功，token = " + token + ",belongId = " + belongId;
         Log.e(TAG, content);
         TIMOfflinePushToken param = new TIMOfflinePushToken(mBussId,token);
-        TIMManager.getInstance().setOfflinePushToken(param, new TIMCallBack() {
-            @Override
-            public void onError(int i, String s) {
+        try {
+            Log.e(TAG, "-------------param = new TIMOfflinePushToken(mBussId,token)-1->:");
+            TIMManager.getInstance().setOfflinePushToken(param, new TIMCallBack() {
+                @Override
+                public void onError(int i, String s) {
+                    Log.e(TAG, "-------onError=------>;"+s);
+                }
 
-            }
-
-            @Override
-            public void onSuccess() {
-
-            }
-        });
+                @Override
+                public void onSuccess() {
+                    Log.e(TAG, "-------onSuccess=------>;");
+                }
+            });
+            Log.e(TAG, "-------------param = new TIMOfflinePushToken(mBussId,token)-2->:");
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, e.getMessage());
+        }
     }
 
     @Override

@@ -6,11 +6,10 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.baidu.tts.client.SpeechError
-import com.baidu.tts.client.SpeechSynthesizerListener
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hanwin.product.R
+import com.hanwin.product.Text2VoiceActivity
 import com.hanwin.product.home.bean.VoiceListBean
 import com.hanwin.product.utils.AppUtils
 import com.tencent.qcloudtts.callback.QCloudPlayerCallback
@@ -56,69 +55,33 @@ class TextVoiceAdapter : BaseQuickAdapter<VoiceListBean, BaseViewHolder> {
             content_layout?.visibility = View.GONE
             edit_layout?.visibility = View.VISIBLE
         }
-        imageView?.setOnClickListener {
-            when (voiceType) {
-                BAIDU_VOICE_TYPE -> {
-                    if (!item!!.isPlay) {
-                        item!!.isPlay = true
-                        AppUtils.baiduSpeek(item?.text, object : SpeechSynthesizerListener {
-                            override fun onSpeechStart(p0: String?) {
-                                (imageView.background as AnimationDrawable).start()
-                            }
 
-                            override fun onSpeechFinish(p0: String?) {
-                                (imageView.background as AnimationDrawable).stop()
-                                (imageView.background as AnimationDrawable).selectDrawable(0)
-                                item!!.isPlay = false
-                            }
-
-                            override fun onSynthesizeStart(p0: String?) {
-                            }
-
-                            override fun onSpeechProgressChanged(p0: String?, p1: Int) {
-                            }
-
-                            override fun onSynthesizeFinish(p0: String?) {
-                            }
-
-                            override fun onSynthesizeDataArrived(p0: String?, p1: ByteArray?, p2: Int) {
-                            }
-
-                            override fun onError(p0: String?, p1: SpeechError?) {
-                            }
-                        })
-                    }
+        helper?.addOnClickListener(R.id.image_view)
+        if (item!!.isPlay) {
+            AppUtils.tencentSpeek(item?.text, object : QCloudPlayerCallback {
+                override fun onTTSPlayStart() {
+                    Text2VoiceActivity.currPlayPosition = helper!!.adapterPosition
+                    (imageView?.background as AnimationDrawable).start()
                 }
-                TENCENT_VOICE_TYPE -> {
-                    if (!item!!.isPlay) {
-                        item!!.isPlay = true
-                        AppUtils.tencentSpeek(item?.text, object : QCloudPlayerCallback {
-                            override fun onTTSPlayStart() {
-                                (imageView.background as AnimationDrawable).start()
-                            }
 
-                            override fun onTTSPlayWait() {
-                            }
-
-                            override fun onTTSPlayNext() {
-                            }
-
-                            override fun onTTSPlayStop() {
-                            }
-
-                            override fun onTTSPlayEnd() {
-                                (imageView.background as AnimationDrawable).stop()
-                                (imageView.background as AnimationDrawable).selectDrawable(0)
-                                item!!.isPlay = false
-                            }
-
-                            override fun onTTSPlayResume() {
-                            }
-                        })
-                    }
+                override fun onTTSPlayWait() {
                 }
-            }
+
+                override fun onTTSPlayNext() {
+                }
+
+                override fun onTTSPlayStop() {
+                }
+
+                override fun onTTSPlayEnd() {
+                    (imageView?.background as AnimationDrawable).stop()
+                    (imageView?.background as AnimationDrawable).selectDrawable(0)
+                    item.isPlay = false
+                }
+
+                override fun onTTSPlayResume() {
+                }
+            })
         }
     }
-
 }
